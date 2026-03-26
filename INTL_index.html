@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CQ Dashboard &middot; INTL &middot; March 2026</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2"></script>
+<style>
+[data-theme="light"]{--navy:#1c2a3a;--navy2:#0f1c2a;--body:#f7f6f2;--surface:#ffffff;--bdr:#e5e0d8;--bdr2:#d4cfc6;--txt:#1a1208;--txt2:#4a3f2f;--txt3:#8a7a60;--card-bg:#ffffff;--card-bdr:#e5e0d8;--section-bdr:#e5e0d8;--ic-bg:#ffffff;--table-row:#ffffff;--table-hover:#faf8f4;--table-total:#f7f5f0;--param-body-bg:#ffffff;--chart-bg:#ffffff;--sh-sm:0 1px 4px rgba(0,0,0,.07);--sh-md:0 4px 16px rgba(0,0,0,.09);--sh-lg:0 8px 32px rgba(0,0,0,.13);}
+[data-theme="dark"]{--navy:#a855f7;--navy2:#0a0a14;--body:#0f0f1a;--surface:#1a1a2e;--bdr:#2a2a3e;--bdr2:#3a3a50;--txt:#e8e4f0;--txt2:#b8b0cc;--txt3:#7a7090;--card-bg:#1a1a2e;--card-bdr:#2a2a3e;--section-bdr:#2a2a3e;--ic-bg:#1a1a2e;--table-row:#1a1a2e;--table-hover:#242438;--table-total:#141420;--param-body-bg:#1a1a2e;--chart-bg:#1a1a2e;--sh-sm:0 1px 4px rgba(0,0,0,.3);--sh-md:0 4px 16px rgba(0,0,0,.4);--sh-lg:0 8px 32px rgba(0,0,0,.5);}
+:root{--gold:#c8a846;--gold-lt:#e8c86a;--gold-pale:#fffbe6;--green:#16a34a;--green-lt:#22c55e;--green-pale:#f0fdf4;--red:#dc2626;--red-pale:#fef2f2;--orange:#ea580c;--orange-pale:#fff7ed;--blue:#2563eb;--blue-pale:#eff6ff;--purple:#7c3aed;--purple-pale:#f5f3ff;}
+[data-theme="dark"]{--gold-pale:#2a2010;--green-pale:#0a1f10;--red-pale:#1f0a0a;--orange-pale:#1f1008;--blue-pale:#0a1020;--purple-pale:#140a20;}
+*{box-sizing:border-box;margin:0;padding:0;}html{scroll-behavior:smooth;}
+body{font-family:'Segoe UI','Helvetica Neue',Arial,sans-serif;background:var(--body);color:var(--txt);-webkit-font-smoothing:antialiased;overflow-x:hidden;transition:background .3s,color .3s;}
+.hdr{background:var(--navy2);border-bottom:2px solid var(--gold);position:sticky;top:0;z-index:900;height:60px;display:flex;align-items:center;padding:0 40px;gap:16px;}
+.hdr-logo-wrap{display:flex;align-items:center;gap:10px;flex-shrink:0;}
+.hdr-brand{display:flex;flex-direction:column;}
+.hdr-name{font-size:12px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#fff;line-height:1.2;}
+.hdr-tata{font-size:8px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.3);}
+.hdr-sep{width:1px;height:26px;background:rgba(255,255,255,.12);flex-shrink:0;}
+.hdr-title{font-size:11px;font-weight:600;letter-spacing:1.2px;text-transform:uppercase;color:rgba(255,220,100,.5);flex:1;}
+.hdr-auditor{font-size:10px;color:rgba(255,255,255,.35);white-space:nowrap;}
+.hdr-actions{display:flex;align-items:center;gap:8px;}
+.dm-toggle{background:rgba(255,255,255,.08);border:1.5px solid rgba(255,255,255,.15);color:rgba(255,255,255,.7);padding:5px 12px;border-radius:20px;font-size:10px;font-weight:700;letter-spacing:1px;cursor:pointer;transition:all .2s;white-space:nowrap;}
+.dm-toggle:hover{background:rgba(255,255,255,.15);color:#fff;}
+.pdf-btn{background:rgba(200,168,70,.12);border:1.5px solid rgba(200,168,70,.4);color:var(--gold);padding:5px 14px;border-radius:20px;font-size:10px;font-weight:700;letter-spacing:1px;cursor:pointer;transition:all .2s;white-space:nowrap;}
+.pdf-btn:hover{background:rgba(200,168,70,.22);color:var(--gold-lt);}
+.hdr-badge{font-size:9px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--gold);border:1.5px solid rgba(200,168,70,.4);padding:4px 12px;border-radius:20px;background:rgba(200,168,70,.08);white-space:nowrap;}
+.hero{background:linear-gradient(160deg,#0a0a18 0%,#1a2436 55%,#1c2e40 100%);padding:52px 0 44px;border-bottom:2px solid var(--gold);text-align:center;position:relative;overflow:hidden;}
+.hero-glow{position:absolute;top:-80px;right:-80px;width:360px;height:360px;background:radial-gradient(circle,rgba(200,168,70,.1) 0%,transparent 70%);pointer-events:none;}
+.hero-glow2{position:absolute;bottom:-80px;left:-60px;width:280px;height:280px;background:radial-gradient(circle,rgba(168,85,247,.1) 0%,transparent 70%);pointer-events:none;}
+.hero-inner{position:relative;z-index:2;max-width:900px;margin:0 auto;padding:0 40px;}
+.hero-eyebrow{font-size:10px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:14px;display:inline-flex;align-items:center;gap:10px;}
+.hero-eyebrow::before,.hero-eyebrow::after{content:'';width:20px;height:1.5px;background:var(--gold);}
+.hero-title{font-family:Georgia,serif;font-size:clamp(40px,6vw,70px);font-weight:800;color:#a855f7;line-height:.95;letter-spacing:-1px;margin-bottom:6px;animation:heroIn .8s ease both;}
+.hero-date{font-family:Georgia,serif;font-size:clamp(18px,2.5vw,28px);color:rgba(255,255,255,.5);margin-bottom:8px;animation:heroIn .8s .1s ease both;}
+.hero-sub{font-size:12px;color:rgba(255,255,255,.35);letter-spacing:.5px;margin-bottom:36px;animation:heroIn .8s .2s ease both;}
+.hero-stats{display:inline-flex;background:rgba(255,255,255,.04);border:1.5px solid rgba(255,255,255,.1);border-radius:14px;overflow:hidden;animation:heroIn .8s .3s ease both;flex-wrap:wrap;}
+.hs{padding:18px 28px;border-right:1px solid rgba(255,255,255,.08);transition:background .2s;}
+.hs:last-child{border-right:none;}
+.hs:hover{background:rgba(255,255,255,.06);}
+.hs-val{font-family:Georgia,serif;font-size:32px;font-weight:800;line-height:1;margin-bottom:4px;}
+.hs-val.gold{color:var(--gold);}.hs-val.green{color:var(--green-lt);}.hs-val.red{color:#f87171;}.hs-val.white{color:#fff;}
+.hs-lbl{font-size:9px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,.3);}
+@keyframes heroIn{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+.main{max-width:1100px;margin:0 auto;padding:0 40px 80px;}
+section{padding:48px 0;text-align:center;}section+section{border-top:1px solid var(--section-bdr);}
+.sec-ey{font-size:9px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:8px;display:inline-flex;align-items:center;gap:10px;}
+.sec-ey::before,.sec-ey::after{content:'';width:14px;height:1.5px;background:var(--gold);}
+.sec-ttl{font-family:Georgia,serif;font-size:clamp(22px,3vw,34px);font-weight:700;color:var(--txt);margin-bottom:6px;}
+.sec-sub{font-size:13px;color:var(--txt3);margin-bottom:28px;line-height:1.65;max-width:600px;margin-left:auto;margin-right:auto;}
+.target-banner{background:linear-gradient(135deg,#0f1c2a 0%,#1a3050 100%);border:1.5px solid var(--gold);border-radius:14px;padding:22px 28px;margin-bottom:24px;text-align:center;}
+.tb-icon{font-size:28px;margin-bottom:8px;}.tb-lbl{font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--gold);margin-bottom:6px;}
+.tb-txt{font-size:13px;color:rgba(255,255,255,.7);line-height:1.6;max-width:500px;margin:0 auto 18px;}
+.tb-right{display:flex;gap:36px;justify-content:center;}.tb-stat{text-align:center;}
+.tb-num{font-family:Georgia,serif;font-size:26px;font-weight:800;line-height:1;}
+.tb-num.gold{color:var(--gold);}.tb-num.green{color:var(--green-lt);}.tb-num.red{color:#f87171;}
+.tb-slbl{font-size:9px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:rgba(255,255,255,.3);}
+.score-table{width:100%;border-collapse:collapse;border-radius:14px;overflow:hidden;box-shadow:var(--sh-md);}
+.score-table thead tr{background:#0f1c2a;}.score-table thead th{color:rgba(255,255,255,.6);font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;padding:12px 16px;text-align:center;}
+.score-table tbody tr{background:var(--table-row);border-bottom:1px solid var(--bdr);cursor:pointer;transition:background .15s,transform .15s;}
+.score-table tbody tr:hover{background:var(--table-hover);transform:scale(1.002);}.score-table tbody tr.total-row{background:var(--table-total);cursor:default;}.score-table tbody tr.total-row:hover{background:var(--table-total);transform:none;}
+.score-table tbody td{padding:13px 16px;font-size:14px;text-align:center;vertical-align:middle;}
+.agent-cell{display:flex;align-items:center;justify-content:center;gap:12px;}.agent-av{width:36px;height:36px;border-radius:50%;color:#fff;font-size:13px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:transform .2s;}
+.score-table tbody tr:hover .agent-av{transform:scale(1.1);}.agent-nm{font-weight:600;color:var(--txt);font-size:14px;}.agent-hint{font-size:10px;color:var(--txt3);margin-top:1px;}.total-nm{font-weight:700;color:var(--txt);}
+.ncf-badge{display:inline-flex;align-items:center;justify-content:center;width:26px;height:26px;border-radius:50%;background:var(--green-pale);color:var(--green);font-size:12px;font-weight:700;}
+.ncf-badge.ncf-red{background:var(--red-pale);color:var(--red);width:auto;padding:0 8px;border-radius:12px;}
+.bar-cell{display:flex;align-items:center;justify-content:center;gap:10px;}.bar-track{width:90px;height:7px;background:var(--bdr);border-radius:4px;overflow:hidden;flex-shrink:0;}
+.bar-fill{height:100%;border-radius:4px;width:0;transition:width 1.2s cubic-bezier(.4,0,.2,1);}.bar-gold{background:linear-gradient(90deg,#c8a846,#e8c86a);}.bar-green{background:linear-gradient(90deg,#16a34a,#22c55e);}.bar-orange{background:linear-gradient(90deg,#ea580c,#fb923c);}
+.pct{font-weight:700;font-size:14px;min-width:38px;text-align:left;}.c-gold{color:#b8860b;}.c-green{color:#16a34a;}.c-orange{color:#ea580c;}
+.ti{display:inline-block;font-size:11px;font-weight:600;padding:3px 9px;border-radius:8px;white-space:nowrap;}.ti-near{background:var(--gold-pale);color:#92700a;}.ti-below{background:var(--red-pale);color:var(--red);}
+.insight-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:14px;}.insight-grid-2{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-top:14px;}
+.ic{background:var(--ic-bg);border:1.5px solid var(--card-bdr);border-top:3px solid var(--ic-accent,var(--card-bdr));border-radius:14px;padding:20px;box-shadow:var(--sh-sm);text-align:center;transition:transform .25s cubic-bezier(.34,1.56,.64,1),box-shadow .25s;}
+.ic:hover{transform:translateY(-5px) scale(1.02);box-shadow:var(--sh-md);}.ic.gold{--ic-accent:var(--gold);}.ic.green{--ic-accent:var(--green);}.ic.red{--ic-accent:var(--red);}.ic.orange{--ic-accent:var(--orange);}.ic.blue{--ic-accent:var(--blue);}.ic.purple{--ic-accent:var(--purple);}
+.ic-label{font-size:9px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--txt3);margin-bottom:8px;}.ic-val{font-family:Georgia,serif;font-size:38px;font-weight:800;line-height:1;margin-bottom:6px;}
+.ic-val.gold{color:var(--gold);}.ic-val.green{color:var(--green);}.ic-val.red{color:var(--red);}.ic-val.orange{color:var(--orange);}.ic-val.blue{color:var(--blue);}.ic-val.purple{color:var(--purple);}
+.ic-sub{font-size:12px;color:var(--txt3);line-height:1.55;}
+.param-block{margin-bottom:10px;border-radius:12px;overflow:hidden;box-shadow:var(--sh-sm);}.param-hdr{background:#0f1c2a;padding:13px 18px;display:flex;align-items:center;justify-content:space-between;cursor:pointer;user-select:none;transition:background .15s;}.param-hdr:hover{background:#1a2e44;}
+.param-hdr-name{font-size:13px;font-weight:600;color:#fff;}.param-hdr-right{display:flex;align-items:center;gap:12px;}.param-hdr-count{font-family:Georgia,serif;font-size:20px;font-weight:700;color:var(--gold);}.param-arrow{color:rgba(255,255,255,.5);font-size:12px;transition:transform .25s;display:inline-block;}
+.param-body{background:var(--param-body-bg);border:1px solid var(--bdr);border-top:none;display:none;}.param-body.open{display:block;}
+.param-agent-row{display:grid;grid-template-columns:1fr 60px 120px;align-items:center;gap:12px;padding:11px 18px;border-bottom:1px solid var(--bdr);cursor:pointer;transition:background .15s;text-align:center;}.param-agent-row:last-child{border-bottom:none;}.param-agent-row:hover{background:var(--table-hover);}
+.par-name{font-size:14px;font-weight:500;color:var(--txt);text-align:center;}.par-count{font-family:Georgia,serif;font-size:22px;font-weight:700;text-align:center;}
+.par-count.c5,.par-count.c4{color:var(--red);}.par-count.c3{color:var(--orange);}.par-count.c2,.par-count.c1{color:var(--blue);}
+.par-btn{font-size:10px;font-weight:700;letter-spacing:.8px;text-transform:uppercase;color:var(--gold);padding:5px 12px;border:1.5px solid rgba(200,168,70,.35);border-radius:8px;background:transparent;cursor:pointer;transition:all .15s;}.par-btn:hover{background:var(--gold-pale);transform:scale(1.05);}
+.chart-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;align-items:start;}.chart-card{background:var(--chart-bg);border:1.5px solid var(--card-bdr);border-radius:14px;padding:22px 22px 18px;box-shadow:var(--sh-sm);text-align:left;transition:transform .2s,box-shadow .2s;}.chart-card:hover{transform:translateY(-2px);box-shadow:var(--sh-md);}
+.heatmap-card{background:var(--chart-bg);border:1.5px solid var(--card-bdr);border-radius:14px;padding:22px 22px 18px;box-shadow:var(--sh-sm);transition:transform .2s,box-shadow .2s;}.heatmap-card:hover{transform:translateY(-2px);box-shadow:var(--sh-md);}
+.cc-title{font-family:Georgia,serif;font-size:17px;font-weight:700;color:var(--txt);margin-bottom:3px;}.cc-sub{font-size:11px;color:var(--txt3);margin-bottom:14px;line-height:1.4;}
+.ch{position:relative;width:100%;height:230px;}.ch canvas{position:absolute;top:0;left:0;width:100%!important;height:100%!important;}
+#modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.65);backdrop-filter:blur(10px);z-index:999;display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .3s;}
+#modal-overlay.open{opacity:1;pointer-events:all;}.modal{background:var(--surface);border-radius:20px;max-width:660px;width:95%;max-height:88vh;overflow:hidden;display:flex;flex-direction:column;transform:scale(.95) translateY(10px);transition:transform .3s cubic-bezier(.34,1.56,.64,1);box-shadow:var(--sh-lg);}
+#modal-overlay.open .modal{transform:scale(1) translateY(0);}.modal-top{background:#0f1c2a;padding:26px 30px 22px;position:relative;flex-shrink:0;}
+.modal-top::after{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--gold),transparent);}
+.modal-close{position:absolute;top:12px;right:14px;width:28px;height:28px;border-radius:50%;background:rgba(255,255,255,.1);border:1.5px solid rgba(255,255,255,.15);color:rgba(255,255,255,.6);cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:13px;transition:all .2s;}
+.modal-close:hover{background:rgba(255,255,255,.2);color:#fff;transform:rotate(90deg);}
+#m-name{font-family:Georgia,serif;font-size:30px;font-weight:800;color:#fff;line-height:1;margin-bottom:2px;}#m-role{font-size:10px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.35);margin-bottom:16px;}
+#m-metrics{display:flex;gap:8px;flex-wrap:wrap;}.mm{background:rgba(255,255,255,.07);border:1.5px solid rgba(255,255,255,.1);border-radius:10px;padding:10px 14px;text-align:center;min-width:68px;}
+.mm-val{font-family:Georgia,serif;font-size:24px;font-weight:800;line-height:1;}.mm-val.gold{color:var(--gold);}.mm-val.green{color:var(--green-lt);}.mm-val.orange{color:#fb923c;}.mm-val.red{color:#f87171;}.mm-val.white{color:#fff;}
+.mm-lbl{font-size:8px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;color:rgba(255,255,255,.3);margin-top:3px;}
+#m-body{overflow-y:auto;padding:22px 28px 24px;flex:1;background:var(--surface);}
+.modal-sec-lbl{font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--txt3);margin:18px 0 10px;display:flex;align-items:center;gap:8px;}
+.modal-sec-lbl::before,.modal-sec-lbl::after{content:'';flex:1;height:1px;background:var(--bdr);}
+.gauge-wrap{display:flex;flex-direction:column;gap:8px;background:var(--body);border:1px solid var(--bdr);border-radius:12px;padding:14px 18px;margin-bottom:4px;}
+.gauge-track{height:10px;background:var(--bdr);border-radius:6px;overflow:hidden;position:relative;margin-bottom:4px;}
+.gauge-target{position:absolute;top:-2px;bottom:-2px;width:2px;border-radius:2px;}
+.gauge-labels{display:flex;justify-content:space-between;font-size:10px;color:var(--txt3);}
+.param-mini-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;}.pmg-item{background:var(--body);border:1px solid var(--bdr);border-radius:10px;padding:10px 8px;text-align:center;transition:transform .2s;}.pmg-item:hover{transform:scale(1.05);}.pmg-item.pmg-hl{border-color:var(--gold);background:var(--gold-pale);}
+.pmg-val{font-family:Georgia,serif;font-size:22px;font-weight:800;line-height:1;}.pmg-lbl{font-size:8px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;color:var(--txt3);margin-top:3px;}
+.aoi-list{display:flex;flex-direction:column;gap:8px;}.aoi-item{background:var(--body);border:1px solid var(--bdr);border-left:3px solid #ccc;border-radius:0 10px 10px 0;padding:11px 14px;transition:transform .15s;}.aoi-item:hover{transform:translateX(4px);}
+.aoi-cat{font-size:9px;font-weight:700;letter-spacing:1px;text-transform:uppercase;margin-bottom:3px;}.aoi-text{font-size:13px;color:var(--txt2);line-height:1.55;}
+.case-card{background:var(--body);border:1px solid var(--bdr);border-left:3px solid var(--bdr2);border-radius:0 10px 10px 0;padding:12px 14px;margin-bottom:8px;transition:border-left-color .2s,transform .15s;}.case-card:hover{transform:translateX(3px);}.case-card.case-hl{border-left-color:var(--gold);background:var(--gold-pale);}
+.case-hd{display:flex;justify-content:space-between;align-items:flex-start;gap:8px;margin-bottom:5px;}.case-query{font-size:13px;font-weight:600;color:var(--txt);flex:1;}.case-flag{font-size:10px;color:var(--gold);font-weight:700;margin-left:4px;}
+.case-badge{font-size:10px;font-weight:700;padding:2px 9px;border-radius:8px;white-space:nowrap;flex-shrink:0;}.csb-high{background:var(--green-pale);color:var(--green);}.csb-mid{background:var(--gold-pale);color:#92700a;}.csb-low{background:var(--red-pale);color:var(--red);}
+.case-text{font-size:12.5px;color:var(--txt2);line-height:1.6;}.better-box{background:var(--body);border:1px solid var(--bdr);border-radius:12px;padding:14px 16px;}
+.better-item{font-size:13px;color:var(--txt2);line-height:1.6;padding:5px 0 5px 16px;position:relative;border-bottom:1px dotted var(--bdr);}.better-item:last-child{border-bottom:none;}.better-arrow{position:absolute;left:0;color:var(--gold);}
+.footer{background:#0f1c2a;border-top:2px solid var(--gold);padding:26px 40px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:14px;}
+.ft-left{display:flex;align-items:center;gap:10px;}.ft-brand{font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.65);}.ft-tata{font-size:8px;letter-spacing:2px;color:rgba(255,255,255,.28);text-transform:uppercase;}
+.ft-right{text-align:right;font-size:11px;color:rgba(255,255,255,.3);line-height:1.9;}.ft-right strong{color:rgba(255,255,255,.5);}
+@media(max-width:700px){.hdr,.hero-inner,.main,.footer{padding-left:16px;padding-right:16px;}.hdr-auditor{display:none;}.hero-stats{flex-wrap:wrap;}.insight-grid,.insight-grid-2,.chart-grid{grid-template-columns:1fr;}.param-mini-grid{grid-template-columns:repeat(3,1fr);}.ch{height:200px;}}
+@media print{.hdr{position:relative;}.hdr-actions{display:none;}#modal-overlay{display:none;}body{background:#fff;color:#000;}.hero{-webkit-print-color-adjust:exact;print-color-adjust:exact;}}
+</style>
+</head>
+<body>
+<header class="hdr">
+  <div class="hdr-logo-wrap">
+    <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48cmVjdCB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgcng9IjE0IiBmaWxsPSIjOUMyN0IwIi8+PHBvbHlnb24gcG9pbnRzPSI2OS4wLDY4LjAgNzIuNCw3Mi42IDY5LjAsNzYuMCA2NS42LDcyLjYiIGZpbGw9IndoaXRlIi8+PHBvbHlnb24gcG9pbnRzPSI3Ny4wLDc2LjAgNzIuNCw3Mi42IDY5LjAsNzYuMCA3Mi40LDc5LjMiIGZpbGw9IndoaXRlIi8+PHBvbHlnb24gcG9pbnRzPSI2OS4wLDg0LjAgNzIuNCw3OS4zIDY5LjAsNzYuMCA2NS42LDc5LjMiIGZpbGw9IndoaXRlIi8+PHBvbHlnb24gcG9pbnRzPSI2MS4wLDc2LjAgNjUuNiw3Mi42IDY5LjAsNzYuMCA2NS42LDc5LjMiIGZpbGw9IndoaXRlIi8+PHBvbHlnb24gcG9pbnRzPSI1NC4wLDcyLjAgNTcuNCw3Ni42IDU0LjAsODAuMCA1MC42LDc2LjYiIGZpbGw9IndoaXRlIi8+PHBvbHlnb24gcG9pbnRzPSI2Mi4wLDgwLjAgNTcuNCw3Ni42IDU0LjAsODAuMCA1Ny40LDgzLjQiIGZpbGw9IndoaXRlIi8+PHBvbHlnb24gcG9pbnRzPSI1NC4wLDg4LjAgNTcuNCw4My40IDU0LjAsODAuMCA1MC42LDgzLjQiIGZpbGw9IndoaXRlIi8+PHBvbHlnb24gcG9pbnRzPSI0Ni4wLDgwLjAgNTAuNiw3Ni42IDU0LjAsODAuMCA1MC42LDgzLjQiIGZpbGw9IndoaXRlIi8+PHBvbHlnb24gcG9pbnRzPSIzOS4wLDY4LjAgNDIuNCw3Mi42IDM5LjAsNzYuMCAzNS42LDcyLjYiIGZpbGw9IndoaXRlIi8+PHBvbHlnb24gcG9pbnRzPSI0Ny4wLDc2LjAgNDIuNCw3Mi42IDM5LjAsNzYuMCA0Mi40LDc5LjMiIGZpbGw9IndoaXRlIi8+PHBvbHlnb24gcG9pbnRzPSIzOS4wLDg0LjAgNDIuNCw3OS4zIDM5LjAsNzYuMCAzNS42LDc5LjMiIGZpbGw9IndoaXRlIi8+PHBvbHlnb24gcG9pbnRzPSIzMS4wLDc2LjAgMzUuNiw3Mi42IDM5LjAsNzYuMCAzNS42LDc5LjMiIGZpbGw9IndoaXRlIi8+PHBvbHlnb24gcG9pbnRzPSIyOC4wLDU3LjAgMzEuNCw2MS42IDI4LjAsNjUuMCAyNC43LDYxLjYiIGZpbGw9IndoaXRlIi8+PHBvbHlnb24gcG9pbnRzPSIzNi4wLDY1LjAgMzEuNCw2MS42IDI4LjAsNjUuMCAzMS40LDY4LjQiIGZpbGw9IndoaXRlIi8+PHBvbHlnb24gcG9pbnRzPSIyOC4wLDczLjAgMzEuNCw2OC40IDI4LjAsNjUuMCAyNC43LDY4LjQiIGZpbGw9IndoaXRlIi8+PHBvbHlnb24gcG9pbnRzPSIyMC4wLDY1LjAgMjQuNyw2MS42IDI4LjAsNjUuMCAyNC43LDY4LjQiIGZpbGw9IndoaXRlIi8+PHBvbHlnb24gcG9pbnRzPSIyNC4wLDQyLjAgMjcuNCw0Ni42IDI0LjAsNTAuMCAyMC42LDQ2LjYiIGZpbGw9IndoaXRlIi8+PHBvbHlnb24gcG9pbnRzPSIzMi4wLDUwLjAgMjcuNCw0Ni42IDI0LjAsNTAuMCAyNy40LDUzLjQiIGZpbGw9IndoaXRlIi8+PHBvbHlnb24gcG9pbnRzPSIyNC4wLDU4LjAgMjcuNCw1My40IDI0LjAsNTAuMCAyMC42LDUzLjQiIGZpbGw9IndoaXRlIi8+PHBvbHlnb24gcG9pbnRzPSIxNi4wLDUwLjAgMjAuNiw0Ni42IDI0LjAsNTAuMCAyMC42LDUzLjQiIGZpbGw9IndoaXRlIi8+PHBvbHlnb24gcG9pbnRzPSIyOC4wLDI3LjAgMzEuNCwzMS42IDI4LjAsMzUuMCAyNC43LDMxLjYiIGZpbGw9IndoaXRlIi8+PHBvbHlnb24gcG9pbnRzPSIzNi4wLDM1LjAgMzEuNCwzMS42IDI4LjAsMzUuMCAzMS40LDM4LjQiIGZpbGw9IndoaXRlIi8+PHBvbHlnb24gcG9pbnRzPSIyOC4wLDQzLjAgMzEuNCwzOC40IDI4LjAsMzUuMCAyNC43LDM4LjQiIGZpbGw9IndoaXRlIi8+PHBvbHlnb24gcG9pbnRzPSIyMC4wLDM1LjAgMjQuNywzMS42IDI4LjAsMzUuMCAyNC43LDM4LjQiIGZpbGw9IndoaXRlIi8+PHBvbHlnb24gcG9pbnRzPSIzOS4wLDE2LjAgNDIuNCwyMC43IDM5LjAsMjQuMCAzNS42LDIwLjciIGZpbGw9IndoaXRlIi8+PHBvbHlnb24gcG9pbnRzPSI0Ny4wLDI0LjAgNDIuNCwyMC43IDM5LjAsMjQuMCA0Mi40LDI3LjQiIGZpbGw9IndoaXRlIi8+PHBvbHlnb24gcG9pbnRzPSIzOS4wLDMyLjAgNDIuNCwyNy40IDM5LjAsMjQuMCAzNS42LDI3LjQiIGZpbGw9IndoaXRlIi8+PHBvbHlnb24gcG9pbnRzPSIzMS4wLDI0LjAgMzUuNiwyMC43IDM5LjAsMjQuMCAzNS42LDI3LjQiIGZpbGw9IndoaXRlIi8+PHBvbHlnb24gcG9pbnRzPSI1NC4wLDEyLjAgNTcuNCwxNi42IDU0LjAsMjAuMCA1MC42LDE2LjYiIGZpbGw9IndoaXRlIi8+PHBvbHlnb24gcG9pbnRzPSI2Mi4wLDIwLjAgNTcuNCwxNi42IDU0LjAsMjAuMCA1Ny40LDIzLjQiIGZpbGw9IndoaXRlIi8+PHBvbHlnb24gcG9pbnRzPSI1NC4wLDI4LjAgNTcuNCwyMy40IDU0LjAsMjAuMCA1MC42LDIzLjQiIGZpbGw9IndoaXRlIi8+PHBvbHlnb24gcG9pbnRzPSI0Ni4wLDIwLjAgNTAuNiwxNi42IDU0LjAsMjAuMCA1MC42LDIzLjQiIGZpbGw9IndoaXRlIi8+PHBvbHlnb24gcG9pbnRzPSI2OS4wLDE2LjAgNzIuNCwyMC43IDY5LjAsMjQuMCA2NS42LDIwLjciIGZpbGw9IndoaXRlIi8+PHBvbHlnb24gcG9pbnRzPSI3Ny4wLDI0LjAgNzIuNCwyMC43IDY5LjAsMjQuMCA3Mi40LDI3LjQiIGZpbGw9IndoaXRlIi8+PHBvbHlnb24gcG9pbnRzPSI2OS4wLDMyLjAgNzIuNCwyNy40IDY5LjAsMjQuMCA2NS42LDI3LjQiIGZpbGw9IndoaXRlIi8+PHBvbHlnb24gcG9pbnRzPSI2MS4wLDI0LjAgNjUuNiwyMC43IDY5LjAsMjQuMCA2NS42LDI3LjQiIGZpbGw9IndoaXRlIi8+PC9zdmc+" style="width:34px;height:34px;border-radius:6px;" alt="CaratLane">
+    <div class="hdr-brand"><div class="hdr-name">CaratLane</div><div class="hdr-tata">A Tata Product</div></div>
+  </div>
+  <div class="hdr-sep"></div>
+  <div class="hdr-title">CQ Dashboard &nbsp;&middot;&nbsp; INTL &nbsp;&middot;&nbsp; March 2026</div>
+  <div class="hdr-auditor">Auditor: Jayshree</div>
+  <div class="hdr-actions">
+    <button class="pdf-btn" onclick="window.print()">&#11015; Export PDF</button>
+    <button class="dm-toggle" id="dmBtn" onclick="toggleDark()">&#127769; Dark Mode</button>
+    <div class="hdr-badge">MTD Report</div>
+  </div>
+</header>
+
+<div class="hero">
+  <div class="hero-glow"></div><div class="hero-glow2"></div>
+  <div class="hero-inner">
+    <div class="hero-eyebrow">Quality Assurance &nbsp;&middot;&nbsp; INTL Team</div>
+    <div class="hero-title">CQ <span style="font-style:italic;">Dashboard</span></div>
+    <div class="hero-date">March 2026</div>
+    <div class="hero-sub">70 audits &nbsp;&middot;&nbsp; 7 agents &nbsp;&middot;&nbsp; Audited by Jayshree</div>
+    <div class="hero-stats">
+      <div class="hs"><div class="hs-val white" data-countup="70">70</div><div class="hs-lbl">Total Audits</div></div>
+      <div class="hs"><div class="hs-val gold" data-countup="89" data-suffix="%">89%</div><div class="hs-lbl">Team CQ</div></div>
+      <div class="hs"><div class="hs-val white" data-countup="95" data-suffix="%">95%</div><div class="hs-lbl">Team Target</div></div>
+      <div class="hs"><div class="hs-val red" data-countup="2">2</div><div class="hs-lbl">NCF</div></div>
+      <div class="hs"><div class="hs-val red" data-countup="59">59</div><div class="hs-lbl">Total Errors</div></div>
+    </div>
+  </div>
+</div>
+
+<div class="main">
+  <section>
+    <div class="sec-ey">Agent Performance</div>
+    <div class="sec-ttl">Individual CQ Scores</div>
+    <div class="sec-sub">Click any agent row to view their full report &mdash; AOIs, case-level comments, and parameter breakdown.</div>
+    <div class="target-banner">
+      <div class="tb-icon">&#127919;</div>
+      <div class="tb-lbl">Team Target</div>
+      <div class="tb-txt">Individual target: <strong style="color:var(--gold-lt)">95%</strong> &nbsp;&middot;&nbsp; Team target: <strong style="color:var(--gold)">95%</strong>. Agents at 95%+ are setting the standard for INTL excellence.</div>
+      <div class="tb-right">
+        <div class="tb-stat"><div class="tb-num green">2</div><div class="tb-slbl">At Target</div></div>
+        <div class="tb-stat"><div class="tb-num gold">2</div><div class="tb-slbl">90%+ Range</div></div>
+        <div class="tb-stat"><div class="tb-num red">5</div><div class="tb-slbl">Below 90%</div></div>
+      </div>
+    </div>
+    <table class="score-table">
+      <thead><tr><th>Agent</th><th>Audits</th><th>NCF</th><th>CQ Score</th><th>vs Target</th></tr></thead>
+      <tbody>
+        <tr onclick="openModal('sushmap')">
+          <td><div class="agent-cell"><div class="agent-av" style="background:#c8a846;">SP</div><div><div class="agent-nm">Sushma_P</div><div class="agent-hint">Click to view full report &rarr;</div></div></div></td>
+          <td>10</td><td><span class="ncf-badge">0</span></td>
+          <td><div class="bar-cell"><div class="bar-track"><div class="bar-fill bar-gold" data-width="98"></div></div><span class="pct c-gold">98%</span></div></td>
+          <td><span class="ti ti-near">+3% above target</span></td>
+        </tr>
+        <tr onclick="openModal('swethar')">
+          <td><div class="agent-cell"><div class="agent-av" style="background:#16a34a;">SR</div><div><div class="agent-nm">Swetha_R</div><div class="agent-hint">Click to view full report &rarr;</div></div></div></td>
+          <td>10</td><td><span class="ncf-badge">0</span></td>
+          <td><div class="bar-cell"><div class="bar-track"><div class="bar-fill bar-gold" data-width="96"></div></div><span class="pct c-gold">96%</span></div></td>
+          <td><span class="ti ti-near">+1% above target</span></td>
+        </tr>
+        <tr onclick="openModal('aanchalm')">
+          <td><div class="agent-cell"><div class="agent-av" style="background:#2563eb;">AM</div><div><div class="agent-nm">Aanchal_M</div><div class="agent-hint">Click to view full report &rarr;</div></div></div></td>
+          <td>10</td><td><span class="ncf-badge">0</span></td>
+          <td><div class="bar-cell"><div class="bar-track"><div class="bar-fill bar-green" data-width="87"></div></div><span class="pct c-green">87%</span></div></td>
+          <td><span class="ti ti-below">-8% to target</span></td>
+        </tr>
+        <tr onclick="openModal('hitenk')">
+          <td><div class="agent-cell"><div class="agent-av" style="background:#7c3aed;">HK</div><div><div class="agent-nm">Hiten_K</div><div class="agent-hint">Click to view full report &rarr;</div></div></div></td>
+          <td>10</td><td><span class="ncf-badge">0</span></td>
+          <td><div class="bar-cell"><div class="bar-track"><div class="bar-fill bar-green" data-width="86"></div></div><span class="pct c-green">86%</span></div></td>
+          <td><span class="ti ti-below">-9% to target</span></td>
+        </tr>
+        <tr onclick="openModal('uzairk')">
+          <td><div class="agent-cell"><div class="agent-av" style="background:#ea580c;">UK</div><div><div class="agent-nm">Uzair_K</div><div class="agent-hint">Click to view full report &rarr;</div></div></div></td>
+          <td>10</td><td><span class="ncf-badge">0</span></td>
+          <td><div class="bar-cell"><div class="bar-track"><div class="bar-fill bar-green" data-width="85"></div></div><span class="pct c-green">85%</span></div></td>
+          <td><span class="ti ti-below">-10% to target</span></td>
+        </tr>
+        <tr onclick="openModal('prasadk')">
+          <td><div class="agent-cell"><div class="agent-av" style="background:#dc2626;">PK</div><div><div class="agent-nm">Prasad_K</div><div class="agent-hint">Click to view full report &rarr;</div></div></div></td>
+          <td>10</td><td><span class="ncf-badge">0</span></td>
+          <td><div class="bar-cell"><div class="bar-track"><div class="bar-fill bar-green" data-width="85"></div></div><span class="pct c-green">85%</span></div></td>
+          <td><span class="ti ti-below">-10% to target</span></td>
+        </tr>
+        <tr onclick="openModal('devadharshinid')">
+          <td><div class="agent-cell"><div class="agent-av" style="background:#0891b2;">DD</div><div><div class="agent-nm">Devadharshini_D</div><div class="agent-hint">Click to view full report &rarr;</div></div></div></td>
+          <td>10</td><td><span class="ncf-badge ncf-red">2</span></td>
+          <td><div class="bar-cell"><div class="bar-track"><div class="bar-fill bar-green" data-width="84"></div></div><span class="pct c-green">84%</span></div></td>
+          <td><span class="ti ti-below">-11% to target</span></td>
+        </tr>
+        <tr class="total-row">
+          <td><span class="total-nm">Grand Total</span></td>
+          <td>70</td><td><span class="ncf-badge ncf-red">2</span></td>
+          <td><div class="bar-cell"><div class="bar-track"><div class="bar-fill bar-gold" data-width="89"></div></div><span class="pct c-gold">89%</span></div></td>
+          <td><span class="ti ti-near">+-6% above target</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section>
+    <div class="sec-ey">Team Insights</div>
+    <div class="sec-ttl">Key Observations</div>
+    <div class="sec-sub">At-a-glance team health, top performers, biggest gaps, and risk flags.</div>
+    <div class="insight-grid">
+      <div class="ic gold"><div class="ic-label">&#11088; Top Performers</div><div class="ic-val gold">98%</div><div class="ic-sub"><strong>Sushma_P</strong> leads the team at 98% CQ — closely followed by <strong>Swetha_R</strong> at 96%.</div></div>
+      <div class="ic green"><div class="ic-label">&#10003; Zero NCF</div><div class="ic-val green">6</div><div class="ic-sub">6 agent(s) maintained zero Non CaratLane Friendly cases. <strong>Sushma_P, Swetha_R, Aanchal_M, Hiten_K, Uzair_K, Prasad_K</strong>.</div></div>
+      <div class="ic red"><div class="ic-label">&#9888; Needs Attention</div><div class="ic-val red">84%</div><div class="ic-sub"><strong>Devadharshini_D</strong> — 2 NCF this month, 11% below target. Priority coaching needed.</div></div>
+      <div class="ic orange"><div class="ic-label">&#128308; Most Error-Prone</div><div class="ic-val orange">23</div><div class="ic-sub"><strong>Soft Skills</strong> — 23 total errors team-wide. Greeting delays &amp; tone are key contributors.</div></div>
+      <div class="ic blue"><div class="ic-label">&#128202; Avg Gap to Target</div><div class="ic-val blue">+-6%</div><div class="ic-sub">Team average is 89% vs 95% target. Team is ahead — keep the standard high.</div></div>
+      <div class="ic purple"><div class="ic-label">&#127991; Tagging Errors</div><div class="ic-val purple">5</div><div class="ic-sub">Incorrect dispositions flagged this month. Needs focus on correct tagging procedures.</div></div>
+    </div>
+    <div class="insight-grid-2">
+      <div class="ic gold">
+        <div class="ic-label">&#128204; JCs Ranked by Total Errors</div>
+        <div style="margin-top:10px;display:flex;flex-direction:column;gap:7px;">
+          <div style="display:flex;justify-content:center;align-items:center;gap:12px;font-size:13px;"><span style="font-weight:600;color:var(--txt)">Devadharshini_D</span><span style="font-weight:700;color:var(--red);">13 errors</span></div>
+          <div style="display:flex;justify-content:center;align-items:center;gap:12px;font-size:13px;"><span style="font-weight:600;color:var(--txt)">Hiten_K</span><span style="font-weight:700;color:var(--red);">12 errors</span></div>
+          <div style="display:flex;justify-content:center;align-items:center;gap:12px;font-size:13px;"><span style="font-weight:600;color:var(--txt)">Aanchal_M</span><span style="font-weight:700;color:var(--red);">11 errors</span></div>
+          <div style="display:flex;justify-content:center;align-items:center;gap:12px;font-size:13px;"><span style="font-weight:600;color:var(--txt)">Prasad_K</span><span style="font-weight:700;color:var(--red);">11 errors</span></div>
+          <div style="display:flex;justify-content:center;align-items:center;gap:12px;font-size:13px;"><span style="font-weight:600;color:var(--txt)">Uzair_K</span><span style="font-weight:700;color:var(--orange);">8 errors</span></div>
+        </div>
+      </div>
+      <div class="ic blue">
+        <div class="ic-label">&#127919; Key Focus Area per JC</div>
+        <div style="margin-top:10px;display:flex;flex-direction:column;gap:7px;text-align:center;">
+          <div style="font-size:13px;color:var(--txt2);"><strong>Devadharshini_D</strong> &mdash; Follow Up (5 errors)</div>
+          <div style="font-size:13px;color:var(--txt2);"><strong>Uzair_K</strong> &mdash; Probing (3 errors)</div>
+          <div style="font-size:13px;color:var(--txt2);"><strong>Prasad_K</strong> &mdash; Soft Skills (6 errors)</div>
+          <div style="font-size:13px;color:var(--txt2);"><strong>Hiten_K</strong> &mdash; Soft Skills (5 errors)</div>
+          <div style="font-size:13px;color:var(--txt2);"><strong>Aanchal_M</strong> &mdash; Soft Skills (8 errors)</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-ey">Error Analysis</div>
+    <div class="sec-ttl">Parameter-wise Error Breakdown</div>
+    <div class="sec-sub">Click a parameter header to expand. Click an agent row to open their full report with those cases highlighted.</div>
+
+    <div class="param-block">
+      <div class="param-hdr" onclick="toggleParam('ss')"><span class="param-hdr-name">Soft Skills</span><div class="param-hdr-right"><span class="param-hdr-count">23 errors</span><span class="param-arrow" id="parr-ss">&#9660;</span></div></div>
+      <div class="param-body" id="pbody-ss">
+        <div class="param-agent-row" onclick="openModal('aanchalm','ss')"><span class="par-name">Aanchal_M</span><span class="par-count c5">8</span><button class="par-btn">View Cases</button></div>
+        <div class="param-agent-row" onclick="openModal('prasadk','ss')"><span class="par-name">Prasad_K</span><span class="par-count c5">6</span><button class="par-btn">View Cases</button></div>
+        <div class="param-agent-row" onclick="openModal('hitenk','ss')"><span class="par-name">Hiten_K</span><span class="par-count c5">5</span><button class="par-btn">View Cases</button></div>
+        <div class="param-agent-row" onclick="openModal('devadharshinid','ss')"><span class="par-name">Devadharshini_D</span><span class="par-count c2">2</span><button class="par-btn">View Cases</button></div>
+        <div class="param-agent-row" onclick="openModal('sushmap','ss')"><span class="par-name">Sushma_P</span><span class="par-count c1">1</span><button class="par-btn">View Cases</button></div>
+        <div class="param-agent-row" onclick="openModal('uzairk','ss')"><span class="par-name">Uzair_K</span><span class="par-count c1">1</span><button class="par-btn">View Cases</button></div>
+      </div>
+    </div>
+
+    <div class="param-block">
+      <div class="param-hdr" onclick="toggleParam('sol')"><span class="param-hdr-name">Solution & Recommendation</span><div class="param-hdr-right"><span class="param-hdr-count">13 errors</span><span class="param-arrow" id="parr-sol">&#9660;</span></div></div>
+      <div class="param-body" id="pbody-sol">
+        <div class="param-agent-row" onclick="openModal('devadharshinid','sol')"><span class="par-name">Devadharshini_D</span><span class="par-count c4">4</span><button class="par-btn">View Cases</button></div>
+        <div class="param-agent-row" onclick="openModal('aanchalm','sol')"><span class="par-name">Aanchal_M</span><span class="par-count c3">3</span><button class="par-btn">View Cases</button></div>
+        <div class="param-agent-row" onclick="openModal('uzairk','sol')"><span class="par-name">Uzair_K</span><span class="par-count c2">2</span><button class="par-btn">View Cases</button></div>
+        <div class="param-agent-row" onclick="openModal('prasadk','sol')"><span class="par-name">Prasad_K</span><span class="par-count c2">2</span><button class="par-btn">View Cases</button></div>
+        <div class="param-agent-row" onclick="openModal('swethar','sol')"><span class="par-name">Swetha_R</span><span class="par-count c1">1</span><button class="par-btn">View Cases</button></div>
+        <div class="param-agent-row" onclick="openModal('hitenk','sol')"><span class="par-name">Hiten_K</span><span class="par-count c1">1</span><button class="par-btn">View Cases</button></div>
+      </div>
+    </div>
+
+    <div class="param-block">
+      <div class="param-hdr" onclick="toggleParam('prob')"><span class="param-hdr-name">Probing</span><div class="param-hdr-right"><span class="param-hdr-count">9 errors</span><span class="param-arrow" id="parr-prob">&#9660;</span></div></div>
+      <div class="param-body" id="pbody-prob">
+        <div class="param-agent-row" onclick="openModal('hitenk','prob')"><span class="par-name">Hiten_K</span><span class="par-count c4">4</span><button class="par-btn">View Cases</button></div>
+        <div class="param-agent-row" onclick="openModal('uzairk','prob')"><span class="par-name">Uzair_K</span><span class="par-count c3">3</span><button class="par-btn">View Cases</button></div>
+        <div class="param-agent-row" onclick="openModal('sushmap','prob')"><span class="par-name">Sushma_P</span><span class="par-count c1">1</span><button class="par-btn">View Cases</button></div>
+        <div class="param-agent-row" onclick="openModal('prasadk','prob')"><span class="par-name">Prasad_K</span><span class="par-count c1">1</span><button class="par-btn">View Cases</button></div>
+      </div>
+    </div>
+
+    <div class="param-block">
+      <div class="param-hdr" onclick="toggleParam('fu')"><span class="param-hdr-name">Follow Up</span><div class="param-hdr-right"><span class="param-hdr-count">9 errors</span><span class="param-arrow" id="parr-fu">&#9660;</span></div></div>
+      <div class="param-body" id="pbody-fu">
+        <div class="param-agent-row" onclick="openModal('devadharshinid','fu')"><span class="par-name">Devadharshini_D</span><span class="par-count c5">5</span><button class="par-btn">View Cases</button></div>
+        <div class="param-agent-row" onclick="openModal('uzairk','fu')"><span class="par-name">Uzair_K</span><span class="par-count c2">2</span><button class="par-btn">View Cases</button></div>
+        <div class="param-agent-row" onclick="openModal('hitenk','fu')"><span class="par-name">Hiten_K</span><span class="par-count c1">1</span><button class="par-btn">View Cases</button></div>
+        <div class="param-agent-row" onclick="openModal('prasadk','fu')"><span class="par-name">Prasad_K</span><span class="par-count c1">1</span><button class="par-btn">View Cases</button></div>
+      </div>
+    </div>
+
+    <div class="param-block">
+      <div class="param-hdr" onclick="toggleParam('tag')"><span class="param-hdr-name">Tagging</span><div class="param-hdr-right"><span class="param-hdr-count">5 errors</span><span class="param-arrow" id="parr-tag">&#9660;</span></div></div>
+      <div class="param-body" id="pbody-tag">
+        <div class="param-agent-row" onclick="openModal('devadharshinid','tag')"><span class="par-name">Devadharshini_D</span><span class="par-count c2">2</span><button class="par-btn">View Cases</button></div>
+        <div class="param-agent-row" onclick="openModal('sushmap','tag')"><span class="par-name">Sushma_P</span><span class="par-count c1">1</span><button class="par-btn">View Cases</button></div>
+        <div class="param-agent-row" onclick="openModal('hitenk','tag')"><span class="par-name">Hiten_K</span><span class="par-count c1">1</span><button class="par-btn">View Cases</button></div>
+        <div class="param-agent-row" onclick="openModal('prasadk','tag')"><span class="par-name">Prasad_K</span><span class="par-count c1">1</span><button class="par-btn">View Cases</button></div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-ey">Visual Analysis</div>
+    <div class="sec-ttl">Charts &amp; Distribution</div>
+    <div class="sec-sub">Visual breakdown of CQ scores, error distribution, agent errors, and JC-wise error count.</div>
+    <div class="chart-grid">
+      <div class="chart-card"><div class="cc-title">CQ Score vs Target</div><div class="cc-sub">Agent scores vs team target (95%)</div><div class="ch"><canvas id="scoreChart"></canvas></div></div>
+      <div class="chart-card"><div class="cc-title">Error Distribution</div><div class="cc-sub">Total errors split by parameter category</div><div class="ch"><canvas id="errorChart"></canvas></div></div>
+      <div class="chart-card"><div class="cc-title">Errors per JC</div><div class="cc-sub">Total audit errors by JC — stacked by parameter</div><div class="ch"><canvas id="agentErrorChart"></canvas></div></div>
+      <div class="heatmap-card"><div class="cc-title">JC Wise Error Count</div><div class="cc-sub">JC &times; parameter breakdown — spot who struggles where at a glance</div><div id="heatmapContainer"></div></div>
+    </div>
+  </section>
+</div>
+
+<footer class="footer">
+  <div class="ft-left">
+    <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48cmVjdCB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgcng9IjE0IiBmaWxsPSIjOUMyN0IwIi8+PHBvbHlnb24gcG9pbnRzPSI2OS4wLDY4LjAgNzIuNCw3Mi42IDY5LjAsNzYuMCA2NS42LDcyLjYiIGZpbGw9IndoaXRlIi8+PHBvbHlnb24gcG9pbnRzPSI3Ny4wLDc2LjAgNzIuNCw3Mi42IDY5LjAsNzYuMCA3Mi40LDc5LjMiIGZpbGw9IndoaXRlIi8+PHBvbHlnb24gcG9pbnRzPSI2OS4wLDg0LjAgNzIuNCw3OS4zIDY5LjAsNzYuMCA2NS42LDc5LjMiIGZpbGw9IndoaXRlIi8+PHBvbHlnb24gcG9pbnRzPSI2MS4wLDc2LjAgNjUuNiw3Mi42IDY5LjAsNzYuMCA2NS42LDc5LjMiIGZpbGw9IndoaXRlIi8+PHBvbHlnb24gcG9pbnRzPSI1NC4wLDcyLjAgNTcuNCw3Ni42IDU0LjAsODAuMCA1MC42LDc2LjYiIGZpbGw9IndoaXRlIi8+PHBvbHlnb24gcG9pbnRzPSI2Mi4wLDgwLjAgNTcuNCw3Ni42IDU0LjAsODAuMCA1Ny40LDgzLjQiIGZpbGw9IndoaXRlIi8+PHBvbHlnb24gcG9pbnRzPSI1NC4wLDg4LjAgNTcuNCw4My40IDU0LjAsODAuMCA1MC42LDgzLjQiIGZpbGw9IndoaXRlIi8+PHBvbHlnb24gcG9pbnRzPSI0Ni4wLDgwLjAgNTAuNiw3Ni42IDU0LjAsODAuMCA1MC42LDgzLjQiIGZpbGw9IndoaXRlIi8+PHBvbHlnb24gcG9pbnRzPSIzOS4wLDY4LjAgNDIuNCw3Mi42IDM5LjAsNzYuMCAzNS42LDcyLjYiIGZpbGw9IndoaXRlIi8+PHBvbHlnb24gcG9pbnRzPSI0Ny4wLDc2LjAgNDIuNCw3Mi42IDM5LjAsNzYuMCA0Mi40LDc5LjMiIGZpbGw9IndoaXRlIi8+PHBvbHlnb24gcG9pbnRzPSIzOS4wLDg0LjAgNDIuNCw3OS4zIDM5LjAsNzYuMCAzNS42LDc5LjMiIGZpbGw9IndoaXRlIi8+PHBvbHlnb24gcG9pbnRzPSIzMS4wLDc2LjAgMzUuNiw3Mi42IDM5LjAsNzYuMCAzNS42LDc5LjMiIGZpbGw9IndoaXRlIi8+PHBvbHlnb24gcG9pbnRzPSIyOC4wLDU3LjAgMzEuNCw2MS42IDI4LjAsNjUuMCAyNC43LDYxLjYiIGZpbGw9IndoaXRlIi8+PHBvbHlnb24gcG9pbnRzPSIzNi4wLDY1LjAgMzEuNCw2MS42IDI4LjAsNjUuMCAzMS40LDY4LjQiIGZpbGw9IndoaXRlIi8+PHBvbHlnb24gcG9pbnRzPSIyOC4wLDczLjAgMzEuNCw2OC40IDI4LjAsNjUuMCAyNC43LDY4LjQiIGZpbGw9IndoaXRlIi8+PHBvbHlnb24gcG9pbnRzPSIyMC4wLDY1LjAgMjQuNyw2MS42IDI4LjAsNjUuMCAyNC43LDY4LjQiIGZpbGw9IndoaXRlIi8+PHBvbHlnb24gcG9pbnRzPSIyNC4wLDQyLjAgMjcuNCw0Ni42IDI0LjAsNTAuMCAyMC42LDQ2LjYiIGZpbGw9IndoaXRlIi8+PHBvbHlnb24gcG9pbnRzPSIzMi4wLDUwLjAgMjcuNCw0Ni42IDI0LjAsNTAuMCAyNy40LDUzLjQiIGZpbGw9IndoaXRlIi8+PHBvbHlnb24gcG9pbnRzPSIyNC4wLDU4LjAgMjcuNCw1My40IDI0LjAsNTAuMCAyMC42LDUzLjQiIGZpbGw9IndoaXRlIi8+PHBvbHlnb24gcG9pbnRzPSIxNi4wLDUwLjAgMjAuNiw0Ni42IDI0LjAsNTAuMCAyMC42LDUzLjQiIGZpbGw9IndoaXRlIi8+PHBvbHlnb24gcG9pbnRzPSIyOC4wLDI3LjAgMzEuNCwzMS42IDI4LjAsMzUuMCAyNC43LDMxLjYiIGZpbGw9IndoaXRlIi8+PHBvbHlnb24gcG9pbnRzPSIzNi4wLDM1LjAgMzEuNCwzMS42IDI4LjAsMzUuMCAzMS40LDM4LjQiIGZpbGw9IndoaXRlIi8+PHBvbHlnb24gcG9pbnRzPSIyOC4wLDQzLjAgMzEuNCwzOC40IDI4LjAsMzUuMCAyNC43LDM4LjQiIGZpbGw9IndoaXRlIi8+PHBvbHlnb24gcG9pbnRzPSIyMC4wLDM1LjAgMjQuNywzMS42IDI4LjAsMzUuMCAyNC43LDM4LjQiIGZpbGw9IndoaXRlIi8+PHBvbHlnb24gcG9pbnRzPSIzOS4wLDE2LjAgNDIuNCwyMC43IDM5LjAsMjQuMCAzNS42LDIwLjciIGZpbGw9IndoaXRlIi8+PHBvbHlnb24gcG9pbnRzPSI0Ny4wLDI0LjAgNDIuNCwyMC43IDM5LjAsMjQuMCA0Mi40LDI3LjQiIGZpbGw9IndoaXRlIi8+PHBvbHlnb24gcG9pbnRzPSIzOS4wLDMyLjAgNDIuNCwyNy40IDM5LjAsMjQuMCAzNS42LDI3LjQiIGZpbGw9IndoaXRlIi8+PHBvbHlnb24gcG9pbnRzPSIzMS4wLDI0LjAgMzUuNiwyMC43IDM5LjAsMjQuMCAzNS42LDI3LjQiIGZpbGw9IndoaXRlIi8+PHBvbHlnb24gcG9pbnRzPSI1NC4wLDEyLjAgNTcuNCwxNi42IDU0LjAsMjAuMCA1MC42LDE2LjYiIGZpbGw9IndoaXRlIi8+PHBvbHlnb24gcG9pbnRzPSI2Mi4wLDIwLjAgNTcuNCwxNi42IDU0LjAsMjAuMCA1Ny40LDIzLjQiIGZpbGw9IndoaXRlIi8+PHBvbHlnb24gcG9pbnRzPSI1NC4wLDI4LjAgNTcuNCwyMy40IDU0LjAsMjAuMCA1MC42LDIzLjQiIGZpbGw9IndoaXRlIi8+PHBvbHlnb24gcG9pbnRzPSI0Ni4wLDIwLjAgNTAuNiwxNi42IDU0LjAsMjAuMCA1MC42LDIzLjQiIGZpbGw9IndoaXRlIi8+PHBvbHlnb24gcG9pbnRzPSI2OS4wLDE2LjAgNzIuNCwyMC43IDY5LjAsMjQuMCA2NS42LDIwLjciIGZpbGw9IndoaXRlIi8+PHBvbHlnb24gcG9pbnRzPSI3Ny4wLDI0LjAgNzIuNCwyMC43IDY5LjAsMjQuMCA3Mi40LDI3LjQiIGZpbGw9IndoaXRlIi8+PHBvbHlnb24gcG9pbnRzPSI2OS4wLDMyLjAgNzIuNCwyNy40IDY5LjAsMjQuMCA2NS42LDI3LjQiIGZpbGw9IndoaXRlIi8+PHBvbHlnb24gcG9pbnRzPSI2MS4wLDI0LjAgNjUuNiwyMC43IDY5LjAsMjQuMCA2NS42LDI3LjQiIGZpbGw9IndoaXRlIi8+PC9zdmc+" style="height:28px;width:28px;border-radius:4px;flex-shrink:0;" alt="CaratLane">
+    <div><div class="ft-brand">CaratLane</div><div class="ft-tata">A Tata Product</div></div>
+  </div>
+  <div class="ft-right"><strong>CQ Dashboard &mdash; INTL</strong><br>March 2026 &middot; 70 Audits<br>Auditor: <strong>Jayshree</strong> &middot; Quality Analyst</div>
+</footer>
+
+<div id="modal-overlay">
+  <div class="modal">
+    <div class="modal-top">
+      <button class="modal-close" onclick="closeModal()">&#10005;</button>
+      <div id="m-name"></div><div id="m-role"></div><div id="m-metrics"></div>
+    </div>
+    <div id="m-body"></div>
+  </div>
+</div>
+
+<script src="data.js"></script>
+<script src="modal.js"></script>
+<script src="charts.js"></script>
+<script>
+function toggleDark(){const h=document.documentElement,d=h.getAttribute('data-theme')==='dark';h.setAttribute('data-theme',d?'light':'dark');document.getElementById('dmBtn').textContent=d?'&#127769; Dark Mode':'&#9728;&#65039; Light Mode';localStorage.setItem('cq-theme',d?'light':'dark');}
+(function(){const s=localStorage.getItem('cq-theme');if(s==='dark'){document.documentElement.setAttribute('data-theme','dark');document.addEventListener('DOMContentLoaded',()=>{const b=document.getElementById('dmBtn');if(b)b.textContent='&#9728;&#65039; Light Mode';});}}());
+function toggleParam(k){const b=document.getElementById('pbody-'+k),a=document.getElementById('parr-'+k),o=b.classList.contains('open');b.classList.toggle('open');if(a)a.style.transform=o?'rotate(0deg)':'rotate(180deg)';}
+function countUp(el,target,suffix,duration){const st=performance.now();function u(now){const p=Math.min((now-st)/duration,1),e=1-Math.pow(1-p,3);el.textContent=Math.round(target*e)+(suffix||'');if(p<1)requestAnimationFrame(u);}requestAnimationFrame(u);}
+function animateBars(){document.querySelectorAll('.bar-fill[data-width]').forEach(b=>{const w=b.getAttribute('data-width');setTimeout(()=>{b.style.width=w+'%';},200);});}
+document.addEventListener('DOMContentLoaded',()=>{
+  setTimeout(()=>{document.querySelectorAll('[data-countup]').forEach(el=>{countUp(el,parseInt(el.getAttribute('data-countup')),el.getAttribute('data-suffix')||'',1200);});},400);
+  animateBars();
+  document.getElementById('modal-overlay').addEventListener('click',function(e){if(e.target===this)closeModal();});
+  document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal();});
+  setTimeout(renderCharts,300);
+});
+</script>
+</body>
+</html>
