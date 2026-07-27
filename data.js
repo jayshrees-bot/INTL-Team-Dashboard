@@ -1,96 +1,969 @@
+/* ============================================================
+   International Team — CQ Audit Data — July 2026
+   Auditor: Jayshree · Source: raw audit sheet export
+   ------------------------------------------------------------
+   Regenerate this file the same way each month: export the raw
+   audit sheet, filter to the month, and rebuild this object.
+   Everything else (index.html, charts.js, modal.js) reads from
+   this file and needs no changes month to month.
+   ============================================================ */
+
 const AGENTS = {
-  sushmap: {
-    name: "Sushma_P",
-    initials: "SP",
-    color: "#c8a846",
-    cq: 98,
-    audits: 10,
-    ncf: 0,
-    totalErrors: 3,
-    params: {"ss": 1, "sol": 0, "prob": 1, "tag": 1, "fu": 0},
-    aois: [{"cat": "Soft Skills", "label": "Grammatical mistakes", "text": "Occurred 1 time(s) this month."}, {"cat": "Probing", "label": "Lack of probing", "text": "Occurred 1 time(s) this month."}, {"cat": "Tagging", "label": "Incorrect Dispostions selected", "text": "Occurred 1 time(s) this month."}],
-    cases: [{"query": "Shaya", "score": 100, "comment": "cx was looking for shaya designs. JC informed the same is not available for live images and video. Pitched for POP."}, {"query": "SKU availability at store", "score": 100, "comment": "cx called to check the designs available at the NJ store. JC asked cx to share the designs on WA and helped the cx with real time images. Sales done,"}, {"query": "Jewellery selection", "score": 100, "comment": "Cx was looking for a set of bracelet, earrings and necklace. But did not show any interest in FU call despite JC assisting cx end to end.."}, {"query": "Customisation existing design", "score": 75, "comment": "Cx was looking for the men's ear studs. JC assisted with the pricing etc. Cx felt the pricing to be high. JC directly sent the link for available options than asking for the price range cx was looking for."}, {"query": "SKU Related", "score": 100, "comment": "Cx wanted to check on the duarability of a particular SKU."}, {"query": "Shipping possibility", "score": 100, "comment": "cx wanted to check on the pricing for if the same is inclusive of taxes etc. JC assisted the cx with the details."}, {"query": "Offers & Discounts", "score": 100, "comment": "cx was looking for the additional discounts. JC assisted the cx in placing the order with the best discounts possible,"}, {"query": "OB Call", "score": 100, "comment": "OB call made to inform the store opening."}, {"query": "Customisation existing design", "score": 100, "comment": "Cx was looking for the kids bracelet in a signle piece. JC informed about customisation possibility."}, {"query": "Jewellery selection", "score": 100, "comment": "Cx came on chats to select the designs. Srilankan cx JC assisted the cx with the designs but no response. FU done on WA."}],
-    paramCaseMap: {"ss": [3], "prob": [3], "sol": [], "fu": [], "tag": [5]},
+  "sushma": {
+    "name": "Sushma_P",
+    "initials": "SP",
+    "color": "#2563eb",
+    "cq": 92,
+    "audits": 4,
+    "ncf": 0,
+    "totalErrors": 3,
+    "note": "Sushma P scored 92% CQ this month across 4 audits, with no non conformances flagged.",
+    "params": {
+      "ss": 0,
+      "cc": 1,
+      "prob": 1,
+      "sol": 1,
+      "fu": 0,
+      "tag": 0
+    },
+    "aois": [
+      {
+        "cat": "sol",
+        "label": "Solution & Rec.",
+        "text": "1 instance(s) flagged this month under Solution & Rec.. Auditor notes: could have complimented the cx choice"
+      },
+      {
+        "cat": "prob",
+        "label": "Probing",
+        "text": "1 instance(s) flagged this month under Probing. Auditor notes: could have asked the price range."
+      },
+      {
+        "cat": "cc",
+        "label": "Call/Chat Etiquette",
+        "text": "1 instance(s) flagged this month under Call/Chat Etiquette. Auditor notes: delayed response by half an he at 7:27pm"
+      }
+    ],
+    "cases": [
+      {
+        "query": "Customisation existing design",
+        "score": 90,
+        "comment": "cx was looking for a mangalsutra and wanted the same to be customised. JC informed the cx about the options. AOI- delayed response. delayed response by half an he at 7:27pm"
+      },
+      {
+        "query": "SKU availability at store",
+        "score": 88,
+        "comment": "Cx wanted to check on the availability of the design at the store. could have complimented the cx choice"
+      },
+      {
+        "query": "Jewellery selection",
+        "score": 90,
+        "comment": "Cx was looking for the men's ear studs. could have asked the price range."
+      },
+      {
+        "query": "Jewellery selection",
+        "score": 100,
+        "comment": "cx was looking for the men's pendant. JC assisted the cx with details and shared the offers too."
+      }
+    ],
+    "paramCaseMap": {
+      "ss": [],
+      "cc": [
+        0
+      ],
+      "prob": [
+        2
+      ],
+      "sol": [
+        1
+      ],
+      "fu": [],
+      "tag": []
+    }
   },
-  swethar: {
-    name: "Swetha_R",
-    initials: "SR",
-    color: "#16a34a",
-    cq: 96,
-    audits: 10,
-    ncf: 0,
-    totalErrors: 1,
-    params: {"ss": 0, "sol": 1, "prob": 0, "tag": 0, "fu": 0},
-    aois: [{"cat": "Solution", "label": "Unnecessarily transferred or redirected customer", "text": "Occurred 1 time(s) this month."}, {"cat": "General", "label": "Maintain Standards", "text": "Keep up the good quality."}, {"cat": "General", "label": "Maintain Standards", "text": "Keep up the good quality."}],
-    cases: [{"query": "Refund status", "score": 100, "comment": "Cx wanted to check if 25$ which is shipping fee can be converted into voucher for her to use in next purchase."}, {"query": "Refund status", "score": 100, "comment": "Cx was looking for a refund status of an order returned in Sept 2025. JC assisted the customer with the transaction ref#"}, {"query": "Repair Request", "score": 100, "comment": "Cx mangalsutra broke so came on chats to check if the repair is possible or not for the same."}, {"query": "Return related", "score": 100, "comment": "Cx had requested for a return so called to check on how to send back the product using return label."}, {"query": "Order status", "score": 100, "comment": "cx wanted to know the order status of a particular SKU as ordered multiple items and the rest were delivered."}, {"query": "Repair related", "score": 100, "comment": "cx wanted to give a bracelet for the repair but the same was not appearing on the system for the JC to raise or assist the cx with repair."}, {"query": "Incorrect product sent", "score": 100, "comment": "cx oredered a product in yellow gold but received the same in white gold so called to complaint on the same."}, {"query": "Order status", "score": 100, "comment": "order status enquiry."}, {"query": "Order status", "score": 60, "comment": "Cx wanted to know the status of the order. AOI- JC missed checking the order and directly asked for 2-3 hrs."}, {"query": "Refund status", "score": 100, "comment": "cx had requested for the cancellation of her order due to the delay in delivery due to migration. JC assisted the cx with the refund status as it was processed long back. Cx then checked and confirmed that the amount is credited back to her account."}],
-    paramCaseMap: {"ss": [], "prob": [], "sol": [8], "fu": [], "tag": []},
+  "uzair": {
+    "name": "Uzair_K",
+    "initials": "UK",
+    "color": "#c8a846",
+    "cq": 90,
+    "audits": 10,
+    "ncf": 0,
+    "totalErrors": 8,
+    "note": "Uzair K scored 90% CQ this month across 10 audits, with no non conformances flagged.",
+    "params": {
+      "ss": 1,
+      "cc": 3,
+      "prob": 2,
+      "sol": 1,
+      "fu": 0,
+      "tag": 1
+    },
+    "aois": [
+      {
+        "cat": "tag",
+        "label": "Tagging",
+        "text": "1 instance(s) flagged this month under Tagging. Auditor notes: new design but tagged as searching BOD given"
+      },
+      {
+        "cat": "sol",
+        "label": "Solution & Rec.",
+        "text": "1 instance(s) flagged this month under Solution & Rec.. Auditor notes: offer not shared | could have recommended few designs which are same in men's and women category"
+      },
+      {
+        "cat": "prob",
+        "label": "Probing",
+        "text": "2 instance(s) flagged this month under Probing. Auditor notes: could have asked the cx to select the design she likes to assist with the size details. | did not check for the ocasiom"
+      },
+      {
+        "cat": "ss",
+        "label": "Soft Skills",
+        "text": "1 instance(s) flagged this month under Soft Skills. Auditor notes: saying we are trying to have connections in Canada could have been better phrased like we are looking to expand something like that and cx was constantly saying she would love to have CL in Canada. JC could have thanked the cx saying we are really happy to know that you like our brand and jewellery no acknowledgement on the same."
+      },
+      {
+        "cat": "cc",
+        "label": "Call/Chat Etiquette",
+        "text": "3 instance(s) flagged this month under Call/Chat Etiquette. Auditor notes: delayed response other JC had to intervene | there was a pause at the start"
+      }
+    ],
+    "cases": [
+      {
+        "query": "Jewellery selection",
+        "score": 90,
+        "comment": "cx was looking for a nose pin in specific size. JC shared a few designs but did not share the exact details for the one which cx had asked for. could have asked the cx to select the design she likes to assist with the size details."
+      },
+      {
+        "query": "Jewellery related",
+        "score": 90,
+        "comment": "Cx was looking for the baby bangles and wanted to check on the size. AOI- delayed response at 11:26pm delayed response other JC had to intervene"
+      },
+      {
+        "query": "Jewellery related",
+        "score": 88,
+        "comment": "cx was looking to buy bangles. JC assisted the cx with the details. AOI- missed to wish occasion cx shared it on call. At the start jC paused after intro. there was a pause at the start"
+      },
+      {
+        "query": "SKU availability at store",
+        "score": 100,
+        "comment": "cx wanted to check if she could pick up from the store."
+      },
+      {
+        "query": "Jewellery selection",
+        "score": 80,
+        "comment": "Cx was looking for couple rings. JC informed we do not have separate category as such. AOI- could have checked and done jewellery recommendation as per the customer need. offer not shared could have recommended few designs which are same in men's and women category"
+      },
+      {
+        "query": "Offers & Discounts",
+        "score": 90,
+        "comment": "Cx was looking to purchase a jewellery from the NJ store as she was from Canada. However she wanted to know about the offer validity to plan her purchase. saying we are trying to have connections in Canada could have been better phrased like we are looking to expand something like that and cx was constantly saying she would love to have CL in Canada. JC could have thanked the cx saying we are really happy to know that you like our brand and jewellery no acknowledgement on the same."
+      },
+      {
+        "query": "Real image",
+        "score": 83,
+        "comment": "Cx was looking for a silver 925 gold plated ring. JC shared the live image of the same. Cx wanted the ring to be worn and showed JC informed the same is currently not possible as SKU is not readily available in inventory. JC did probing after more than 15mins by when the cx had already left the chat. AOI - do probe at the right time to have the interaction live. after 8:48pm the JC started probing question at 9:05pm by the time when cx had already left."
+      },
+      {
+        "query": "Customisation existing design",
+        "score": 100,
+        "comment": "cx was looking to customise a earring in 22kt. Hiten's lead JC shared the details."
+      },
+      {
+        "query": "Presales",
+        "score": 88,
+        "comment": "cx was looking for a customised solitaire did not check for the ocasiom"
+      },
+      {
+        "query": "Customisation new design",
+        "score": 94,
+        "comment": "customer was looking for the new design in alphabet L . JC asked cx to share the design if any for reference cx became inactive. AOI - incorrect tagging. BOD given. new design but tagged as searching BOD given"
+      }
+    ],
+    "paramCaseMap": {
+      "ss": [
+        5
+      ],
+      "cc": [
+        1,
+        2,
+        6
+      ],
+      "prob": [
+        0,
+        8
+      ],
+      "sol": [
+        4
+      ],
+      "fu": [],
+      "tag": [
+        9
+      ]
+    }
   },
-  aanchalm: {
-    name: "Aanchal_M",
-    initials: "AM",
-    color: "#2563eb",
-    cq: 87,
-    audits: 10,
-    ncf: 0,
-    totalErrors: 11,
-    params: {"ss": 8, "sol": 3, "prob": 0, "tag": 0, "fu": 0},
-    aois: [{"cat": "Soft Skills", "label": "Incomplete / Delayed - Greeting/ Response", "text": "Occurred 3 time(s) this month."}, {"cat": "Soft Skills", "label": "Made the cx repeat same info", "text": "Occurred 2 time(s) this month."}, {"cat": "Soft Skills", "label": "Grammatical mistakes", "text": "Occurred 1 time(s) this month."}],
-    cases: [{"query": "Customisation existing design", "score": 88, "comment": "Cx was looking for a ring in size 7. JC informed all the details and then got back stating IJ-SI is not available. Cx then agreed with upgraded quality,JC informed will get back in 24hrs and informed DD about the same."}, {"query": "SKU not available - MTO", "score": 70, "comment": "Cx was looking for the baby nazaria's in 2 quantity the same got out of stock in website. JC assisted the cx with the pricing and etc however, failed to acknowledge on app related concern on the first response. Also, when cx felt the pricing was too high no pitch to convince the cx."}, {"query": "C-Live request", "score": 70, "comment": "Cx had requested for a C-live since she did not receive the call she called up to enquire on the same. She also required assistance on exchange of her ring. AOI - interuptions found twice, when cx said she's not aware if she had to take a big size as it's a vanki ring JC seemed to lack jewellery kno"}, {"query": "India Delivery", "score": 100, "comment": "Cx was looking for a SKU and wanted the same to be paid and collecte at a store in India. JC shared the link from Indian website and assisted with the necesary payment details for Indian delivery."}, {"query": "SKU Related", "score": 80, "comment": "Cx was looking for a mangalsutra and chain and wanted to know if the managalsutra chain is machine made or hand crafted. JC made the cx repeat the same infor again. JC called and followed up with the cx. AOI- address the primary query first and then do the probing. Waiting for WA proof."}, {"query": "Jewellery selection", "score": 100, "comment": "Cx called to enquire on purchase in US location."}, {"query": "SKU Related", "score": 95, "comment": "Cx was looking for the details of a particular SKU and wanted to know the size and gauge of the design."}, {"query": "Shipping related", "score": 88, "comment": "Cx wanted to know about the shipping possibility and the charges any if it would be applicable. JC informed about the shipping possibility but missed to inform on the delivery charges not charged."}, {"query": "SKU availability at store", "score": 88, "comment": "Cx wanted to buy a nose pin for which she wanted to confirm if the same is available at the store. JC informed the availability. AOI - delayed response."}, {"query": "Wants to place order", "score": 90, "comment": "Cx had concern with regards to her order as the address was not getting updated. JC assisted the cx with the address update and also informed about the gift wraps. Proactively shared live images. AOI- delayed response observed while sharing the confirmation on the address being updated at the backen"}],
-    paramCaseMap: {"ss": [0, 1, 2, 4, 6, 8, 9], "prob": [], "sol": [1, 2, 7], "fu": [], "tag": []},
+  "aanchal": {
+    "name": "Aanchal_M",
+    "initials": "AM",
+    "color": "#7c3aed",
+    "cq": 83,
+    "audits": 8,
+    "ncf": 1,
+    "totalErrors": 4,
+    "note": "Aanchal M scored 83% CQ this month across 8 audits, with 1 non conformance(s) flagged.",
+    "params": {
+      "ss": 0,
+      "cc": 1,
+      "prob": 1,
+      "sol": 2,
+      "fu": 0,
+      "tag": 0
+    },
+    "aois": [
+      {
+        "cat": "sol",
+        "label": "Solution & Rec.",
+        "text": "2 instance(s) flagged this month under Solution & Rec.. Auditor notes: did not share the store address"
+      },
+      {
+        "cat": "prob",
+        "label": "Probing",
+        "text": "1 instance(s) flagged this month under Probing. Auditor notes: probing to be done at the right time"
+      },
+      {
+        "cat": "cc",
+        "label": "Call/Chat Etiquette",
+        "text": "1 instance(s) flagged this month under Call/Chat Etiquette. Auditor notes: went on break while the chat was active atleast could have shared the offer details or asked someone else to take the chat."
+      }
+    ],
+    "cases": [
+      {
+        "query": "Customisation existing design",
+        "score": 63,
+        "comment": "cx was lookimg for a earrings and wanted the shipping fee to be waived. JC informed cx that she could visit the store for the same. Pitched POP also however missed to share the address. Missed to probe at the right time did the probing at the end after giving closure message. probing to be done at the right time did not share the store address"
+      },
+      {
+        "query": "customisation existing design",
+        "score": 100,
+        "comment": "Cx was looking for a ring and shared a specific size. JC shared the details but cx became inactive."
+      },
+      {
+        "query": "Jewellery selection",
+        "score": 100,
+        "comment": "Cx had selected two designs but wanted to check if the same was available in rose gold. JC informed the customer that the same is available in RG post which cx became inactive."
+      },
+      {
+        "query": "Wants to place the order",
+        "score": 100,
+        "comment": "customer was looking for baby nazaria bracelet. and was looking for the delivery at the earliest. JC assisted the cx with online delivery date and assisted the cx in placing the order online and expediting the same."
+      },
+      {
+        "query": "offers & discounts",
+        "score": 0,
+        "comment": "cx was looking for the TCS employee discount. JC informed the customer to allow sometime to share the details about the discount %. JC then went for break and replied back after 50mins. By then the customer had become inactive. went on break while the chat was active atleast could have shared the offer details or asked someone else to take the chat."
+      },
+      {
+        "query": "Jewellery selection",
+        "score": 100,
+        "comment": "Cx was looking for a chain and pendant. JC assisted the cx with the details."
+      },
+      {
+        "query": "Repair  Genral enquiry",
+        "score": 100,
+        "comment": "customer was looking for the repair of a non-CL jewellery. JC politely denied the same."
+      },
+      {
+        "query": "PoP redemption",
+        "score": 100,
+        "comment": "Cx was looking to place the order using her POP."
+      }
+    ],
+    "paramCaseMap": {
+      "ss": [],
+      "cc": [
+        4
+      ],
+      "prob": [
+        0
+      ],
+      "sol": [
+        0,
+        4
+      ],
+      "fu": [],
+      "tag": []
+    }
   },
-  hitenk: {
-    name: "Hiten_K",
-    initials: "HK",
-    color: "#7c3aed",
-    cq: 86,
-    audits: 10,
-    ncf: 0,
-    totalErrors: 12,
-    params: {"ss": 5, "sol": 1, "prob": 4, "tag": 1, "fu": 1},
-    aois: [{"cat": "Probing", "label": "Pitching for C-Live/ Real images", "text": "Occurred 3 time(s) this month."}, {"cat": "Soft Skills", "label": "Incomplete / Delayed - Greeting/ Response", "text": "Occurred 2 time(s) this month."}, {"cat": "Soft Skills", "label": "Tone and manner was not inviting for queries", "text": "Occurred 1 time(s) this month."}],
-    cases: [{"query": "Jewellery selection", "score": 70, "comment": "Cx was looking for a mangalsutra for his wife's b'day. He shared an image of the one he was looking for. JC shared similars and did necessary probing. At the end cx asked if we have the one shared by him in the image. JC said initially will check and then went back asking for the name. AOI- right pr"}, {"query": "offers & discounts", "score": 65, "comment": "cx was looking for additional discounts and also was looking for the size not available on the website. JC checked and informed the details. AOI - need to be little more quick on the call and dead air to be avoided. Hold time should not exceed more than a min. If so then need to refresh and inform t"}, {"query": "Customisation existing design", "score": 100, "comment": "Cx wanted a ring in YG but was available in WG only. JC assisted with the RTS design but cx wanted the same ring in YG with rush delivery. JC convinced the cx with exchange policy and assisted the cx in placing the order."}, {"query": "Jewellery selection", "score": 100, "comment": "Cx was lookin for kids earrings."}, {"query": "Wants to place order", "score": 100, "comment": "Cx wanted to check if a particular SKU was available for the delivery in US. JC assisted the cx in placing the order."}, {"query": "OB call", "score": 100, "comment": "OB call made to invite cx to the launch of the new store."}, {"query": "Customisation existing design", "score": 100, "comment": "cx was lookig for an existing design in size 7 as the same was not available in webite for the customisation."}, {"query": "Jewellery selection", "score": 90, "comment": "Cx was looking for a particular sku which was posted on website. JC assisted the cx with the link. AOI- need to be quick no markdown given as new and pitch for C-Live."}, {"query": "N/A", "score": 75, "comment": "Cx was looking for a particular SKU came on chats to confirm if the same is available at the store. JC informed the cx about non-availability and also shared the policy( 15day return & exchange). AOI- lack of C-Live pitch, always mention the TAT( turn around time ) to get back to the customer with t"}, {"query": "Jewellery selection", "score": 60, "comment": "Cx was looking for chains for men but we had limited options and cx was looking only for plain gold chains without pendants. JC shared female chain options. AOI- cross selling could have been done."}],
-    paramCaseMap: {"ss": [0, 1, 8], "prob": [7, 8, 9], "sol": [9], "fu": [0], "tag": [1]},
+  "swetha": {
+    "name": "Swetha_R",
+    "initials": "SR",
+    "color": "#16a34a",
+    "cq": 83,
+    "audits": 10,
+    "ncf": 0,
+    "totalErrors": 11,
+    "note": "Swetha R scored 83% CQ this month across 10 audits, with no non conformances flagged.",
+    "params": {
+      "ss": 3,
+      "cc": 3,
+      "prob": 3,
+      "sol": 1,
+      "fu": 1,
+      "tag": 0
+    },
+    "aois": [
+      {
+        "cat": "sol",
+        "label": "Solution & Rec.",
+        "text": "1 instance(s) flagged this month under Solution & Rec.. Auditor notes: need to work on retention efforts"
+      },
+      {
+        "cat": "prob",
+        "label": "Probing",
+        "text": "3 instance(s) flagged this month under Probing. Auditor notes: could have pitched for store when cx said she would want to try and then buy | could have understood the reason for the return"
+      },
+      {
+        "cat": "ss",
+        "label": "Soft Skills",
+        "text": "3 instance(s) flagged this month under Soft Skills. Auditor notes: when cx said she did not get the refund could have been empathetic | placed on mute cx was asking are u there"
+      },
+      {
+        "cat": "fu",
+        "label": "Follow Up",
+        "text": "1 instance(s) flagged this month under Follow Up."
+      },
+      {
+        "cat": "cc",
+        "label": "Call/Chat Etiquette",
+        "text": "3 instance(s) flagged this month under Call/Chat Etiquette. Auditor notes: delayed response at 9:23 pm cx had to seek response | at 11:18 cx replied JC responded at 11:27"
+      }
+    ],
+    "cases": [
+      {
+        "query": "Return Request",
+        "score": 88,
+        "comment": "Cx was looking for the return request of an order as she felt the design was too small. could have pitched for store when cx said she would want to try and then buy"
+      },
+      {
+        "query": "Order cancellation",
+        "score": 94,
+        "comment": "Good chat overall just a slight delay where cx had to ask for the response. delayed response at 9:23 pm cx had to seek response"
+      },
+      {
+        "query": "Refund status",
+        "score": 88,
+        "comment": "Cx called to check on the refund status. when cx said she did not get the refund could have been empathetic"
+      },
+      {
+        "query": "Return request",
+        "score": 63,
+        "comment": "Cx was looking to return the design purchased at the store. JC informed the same is not possible due to policy constraint. placed on mute cx was asking are u there need to work on objection handling could have understood the reason for the return"
+      },
+      {
+        "query": "Order status",
+        "score": 50,
+        "comment": "Cx was looking for the status of her order. AOI- JC mentioned she was not able to pull out the order details. She could have asked the cx to share the same than asking for 1-3 hours of time and then going back and asking for the order number delaying the solution. could have asked for order #"
+      },
+      {
+        "query": "Return Request",
+        "score": 88,
+        "comment": "cx was looking for the retur. JC asked for the reason of the return cx said jewellery not as per the expectation. JC mentioned about C-Live for future purchase. AOI- retention efforts could have been  much better. need to work on retention efforts"
+      },
+      {
+        "query": "Post sales",
+        "score": 63,
+        "comment": "cx was looking for the return of her managalsutra as she did not like the same on her. kept the intelliassign on as the chat was auto assigned and cx had to wait for the response while the JC was on break at 11:18 cx replied JC responded at 11:27"
+      },
+      {
+        "query": "Order cancellation",
+        "score": 100,
+        "comment": "Cx requested for the order cancellation due to the delay in the delivery. It was a wedding gift that customer purchased however,the same was delayed hence cx requested for the cancellation."
+      },
+      {
+        "query": "Return request",
+        "score": 100,
+        "comment": "Cx came for the return of the order. JC pitched for exchange but did not want to go with exchange."
+      },
+      {
+        "query": "Order status",
+        "score": 94,
+        "comment": "order status enquiry. ensure while on break ur not active on chats"
+      }
+    ],
+    "paramCaseMap": {
+      "ss": [
+        2,
+        3,
+        6
+      ],
+      "cc": [
+        1,
+        6,
+        9
+      ],
+      "prob": [
+        0,
+        3,
+        4
+      ],
+      "sol": [
+        5
+      ],
+      "fu": [
+        4
+      ],
+      "tag": []
+    }
   },
-  uzairk: {
-    name: "Uzair_K",
-    initials: "UK",
-    color: "#ea580c",
-    cq: 85,
-    audits: 10,
-    ncf: 0,
-    totalErrors: 8,
-    params: {"ss": 1, "sol": 2, "prob": 3, "tag": 0, "fu": 2},
-    aois: [{"cat": "Follow Up", "label": "Follow up not done", "text": "Occurred 2 time(s) this month."}, {"cat": "Soft Skills", "label": "Grammatical mistakes", "text": "Occurred 1 time(s) this month."}, {"cat": "Probing", "label": "Previous Interaction", "text": "Occurred 1 time(s) this month."}],
-    cases: [{"query": "Customisation existing design", "score": 75, "comment": "Cx was looking for a ring in size 7. JC informed all the details and informed due to technical glitch not able to get the updated pricing so will get back in 12-24 hours. Cx came back again on 4th March as she had not heard from us. JC again started with the start than checking previous interaction."}, {"query": "Jewellery selection", "score": 80, "comment": "Cx was looking for an ear stud for men's to be gifted to her husband. JC assisted with the link. But missed to do follow up as cx had become inactive."}, {"query": "Customisation existing design", "score": 75, "comment": "Cx was loooking for a customisation of a baby bracelet. JC assisted with the size details and how to measure the same. AOI - CLive or real video could have been pitched."}, {"query": "POP Policy", "score": 100, "comment": "Cx was looking to enroll for the PoP before which he wanted to enquire on the policy for the same. Cx was happy with the JC's quick and prompt response. Good job done."}, {"query": "LTE", "score": 88, "comment": "Cx was looking for the LTE value and wanted to know if the same could be tracked in the app."}, {"query": "Coupon code related", "score": 100, "comment": "Cx was looking to apply two coupons while placing a single order. JC informed the cx that the same is not possible."}, {"query": "Order modification", "score": 100, "comment": "cx was looking for the order modification as he wanted to upgrade the diamond quality."}, {"query": "Lifetime Exchange", "score": 50, "comment": "Cx was looking for an exchange of a jewellery purchased earlier under lifetime exchange. JC assisted the cx with the process. However, could not see any follow up being done with sharing the pricing to the cx."}, {"query": "Customisation existing design", "score": 83, "comment": "Cx was looking for a design which had become Out of stock JC informed will check for the MTO possibility but missed to take all the requirements ( diamond quality etc) AOI- waiting for the follow up proof."}, {"query": "Shipping related", "score": 100, "comment": "cx came on chats to enquire about shipping possibility to US. JC confirmed the details with the cx and also pitched for C-live and live images. Ocasion was also checked. FU done but no response from the cx. AOI - instead of being generic that once cx had shortlisted the design can confirm could have"}],
-    paramCaseMap: {"ss": [7], "prob": [0, 2, 8], "sol": [4, 7], "fu": [1, 7], "tag": []},
+  "devadharshini": {
+    "name": "Devadharshini_D",
+    "initials": "DD",
+    "color": "#dc2626",
+    "cq": 75,
+    "audits": 10,
+    "ncf": 2,
+    "totalErrors": 9,
+    "note": "Devadharshini D scored 75% CQ this month across 10 audits, with 2 non conformance(s) flagged.",
+    "params": {
+      "ss": 3,
+      "cc": 1,
+      "prob": 0,
+      "sol": 2,
+      "fu": 2,
+      "tag": 1
+    },
+    "aois": [
+      {
+        "cat": "tag",
+        "label": "Tagging",
+        "text": "1 instance(s) flagged this month under Tagging."
+      },
+      {
+        "cat": "sol",
+        "label": "Solution & Rec.",
+        "text": "2 instance(s) flagged this month under Solution & Rec.. Auditor notes: always mention the TAT for QC and also how long it takes for the product to reach us to avoid repeat customer query."
+      },
+      {
+        "cat": "ss",
+        "label": "Soft Skills",
+        "text": "3 instance(s) flagged this month under Soft Skills. Auditor notes: Towards the end was not sounding friendly | address cx either with name if not sir/ma'am."
+      },
+      {
+        "cat": "fu",
+        "label": "Follow Up",
+        "text": "2 instance(s) flagged this month under Follow Up. Auditor notes: said will get back on email in half an hour no email, if on planned leave must have shared it with some one in team."
+      },
+      {
+        "cat": "cc",
+        "label": "Call/Chat Etiquette",
+        "text": "1 instance(s) flagged this month under Call/Chat Etiquette. Auditor notes: said 10 mins but did not get back for more than an hr"
+      }
+    ],
+    "cases": [
+      {
+        "query": "Order status",
+        "score": 0,
+        "comment": "Cx was looking for the status of her order as the same was delayed for months. JC asked for 10 mins but did not get back. Prasad responded and shared the details post which JC again came back and suggested alternatives. Cx was not ok and asked for the final delivery date on July 3, JC asked to allow couple of hours but no follow up done. Lead not tagged. said 10 mins but did not get back for more than an hr"
+      },
+      {
+        "query": "Order status",
+        "score": 0,
+        "comment": "Cx was looking for the order status as one of his design was not delivered. JC informed she would check and get back in half an hour but no emails or call seen. said will get back on email in half an hour no email, if on planned leave must have shared it with some one in team."
+      },
+      {
+        "query": "Return Request",
+        "score": 88,
+        "comment": "Cx wanted to return the order as she felt the price in US is high. Towards the end was not sounding friendly"
+      },
+      {
+        "query": "Return request",
+        "score": 100,
+        "comment": "Cx was looking to return the design purchase. JC called the cx to check on the reason but call went unanswered. Post which cx called back and JC checked for the reason for the return. Cx did not like the design. JC asked for the exchange. Cx said she did not wish to go for an exchange. JC then assisted with the return process."
+      },
+      {
+        "query": "Order modification",
+        "score": 100,
+        "comment": "Cx was looking for the change in the address as while placing the order the address got changed automatically. JC assisted the cx with the address update on her order."
+      },
+      {
+        "query": "Return Request",
+        "score": 88,
+        "comment": "Cx was looking for the return of the order as the bracelet was too thin for her. JC pitched for the exchange but the cx wanted to proceed with return only. JC assisted the cx with the details. always mention the TAT for QC and also how long it takes for the product to reach us to avoid repeat customer query."
+      },
+      {
+        "query": "Presales",
+        "score": 83,
+        "comment": "Cx was looking for the delivery of her package via UPS at a specific time.  JC informed the same is not possible.AOI- no salutation in any responses. address cx either with name if not sir/ma'am."
+      },
+      {
+        "query": "Retained exchange request",
+        "score": 100,
+        "comment": "Cx came with return request JC pitched for exchange and retained the cx. Good job."
+      },
+      {
+        "query": "Order status",
+        "score": 100,
+        "comment": "Cx was looking for the order status. JC assisted the cx with the status of the order."
+      },
+      {
+        "query": "Order related",
+        "score": 88,
+        "comment": "Cx had an order for earring purchased long back for which she had lost the back stud. JC said will check with the relevant team and update. cx said she lost the back stud no empathy"
+      }
+    ],
+    "paramCaseMap": {
+      "ss": [
+        2,
+        6,
+        9
+      ],
+      "cc": [
+        0
+      ],
+      "prob": [],
+      "sol": [
+        1,
+        5
+      ],
+      "fu": [
+        0,
+        1
+      ],
+      "tag": [
+        0
+      ]
+    }
   },
-  prasadk: {
-    name: "Prasad_K",
-    initials: "PK",
-    color: "#dc2626",
-    cq: 85,
-    audits: 10,
-    ncf: 0,
-    totalErrors: 11,
-    params: {"ss": 6, "sol": 2, "prob": 1, "tag": 1, "fu": 1},
-    aois: [{"cat": "Soft Skills", "label": "Failed to use positive phrases / ownership statement", "text": "Occurred 1 time(s) this month."}, {"cat": "Soft Skills", "label": "Failed to portray Empathy when necessary", "text": "Occurred 1 time(s) this month."}, {"cat": "Soft Skills", "label": "Interrupted the customer", "text": "Occurred 1 time(s) this month."}],
-    cases: [{"query": "Refund status", "score": 100, "comment": "Cx was looking for the refund status of an order returned. JC replied quickly with correct info."}, {"query": "Order cancellation", "score": 100, "comment": "Cx was looking for the cancellation of the order due to delay in delivery."}, {"query": "POP - Payment Related", "score": 65, "comment": "Cx was looking to change the mode of the payment for the PoP. JC shared the link but did not share the validity of the link . Follow up not done promptly to assist and close the request."}, {"query": "Return Request", "score": 100, "comment": "Cx raised a return request JC pitched for exchange and arranged for a video call. Once the VC is done cx would decide on the same. AOI- need to be more loud and clear on call for better clarity and understanding."}, {"query": "Rush Request", "score": 100, "comment": "cx came on chats to check if the b'day discount was applied in the order and wanted a rush delivery of the item as it was her b'day."}, {"query": "Exchnage order", "score": 100, "comment": "cx needed assistance with new exchange order. JC assisted in placing the new order and mapping the payment of the pending amount."}, {"query": "Refund status", "score": 50, "comment": "Cx called to check on the refund. JC informed the refund being initiated for 1 SKU. Cx then informed the JC that she had two sku ordered and then he checked and informed the same is refunded but before giving complete infor on refund started asking feedback which was irrelevant."}, {"query": "Order status", "score": 100, "comment": "Order status query."}, {"query": "Refund status", "score": 33, "comment": "Cx wanted to know the refund status of a particular jewellery out of the 3 refunds. JC did not check the query and shared incorrect info at the start and made the cx repeat. AOI - delayed response, lack of attention to the query."}, {"query": "Delivery status", "score": 100, "comment": "Cx came on chats to confirm on the delivery status."}],
-    paramCaseMap: {"ss": [2, 6, 8], "prob": [6], "sol": [2, 8], "fu": [2], "tag": [2]},
+  "prasad": {
+    "name": "Prasad_K",
+    "initials": "PK",
+    "color": "#0891b2",
+    "cq": 70,
+    "audits": 10,
+    "ncf": 1,
+    "totalErrors": 15,
+    "note": "Prasad K scored 70% CQ this month across 10 audits, with 1 non conformance(s) flagged.",
+    "params": {
+      "ss": 4,
+      "cc": 4,
+      "prob": 1,
+      "sol": 3,
+      "fu": 1,
+      "tag": 2
+    },
+    "aois": [
+      {
+        "cat": "tag",
+        "label": "Tagging",
+        "text": "2 instance(s) flagged this month under Tagging. Auditor notes: lead not tagged | price match not order status"
+      },
+      {
+        "cat": "sol",
+        "label": "Solution & Rec.",
+        "text": "3 instance(s) flagged this month under Solution & Rec.. Auditor notes: could have informed about the store as cx said she wants to try and then buy | refund TAT not shared."
+      },
+      {
+        "cat": "prob",
+        "label": "Probing",
+        "text": "1 instance(s) flagged this month under Probing. Auditor notes: could have checked if the email was received or not | could have checked what size cx purchased from Tanishq"
+      },
+      {
+        "cat": "ss",
+        "label": "Soft Skills",
+        "text": "4 instance(s) flagged this month under Soft Skills. Auditor notes: be little energetic on call | after saying really sorry to know there was a pause for few seconds as if the JC was confused what was to be said next."
+      },
+      {
+        "cat": "fu",
+        "label": "Follow Up",
+        "text": "1 instance(s) flagged this month under Follow Up."
+      },
+      {
+        "cat": "cc",
+        "label": "Call/Chat Etiquette",
+        "text": "4 instance(s) flagged this month under Call/Chat Etiquette. Auditor notes: delayed response by 50 mins | closure not done, multiple delayed responses (NCF BOD given)"
+      }
+    ],
+    "cases": [
+      {
+        "query": "Return Request",
+        "score": 0,
+        "comment": "Cx was looking to return his recent purchase. JC did not respond on time leading to delay cx connected over call and got the concern resolved. delayed response by 50 mins"
+      },
+      {
+        "query": "Order status",
+        "score": 100,
+        "comment": "Cx was looking for the order status"
+      },
+      {
+        "query": "Order status",
+        "score": 75,
+        "comment": "Cx order was delayed and was not receiving any tracking update, hence cx came on chat to enquire about the same. AOI - lead not tagged , delayed responses observed. closure not done, multiple delayed responses (NCF BOD given) lead not tagged"
+      },
+      {
+        "query": "Price match",
+        "score": 88,
+        "comment": "Cx was looking for the price match. As the order value had gone down. delayed response on chat price match not order status"
+      },
+      {
+        "query": "Return Request",
+        "score": 38,
+        "comment": "Cx purchased a bangle but wanted to return as the size did not fit. JC could have probed to check the size purchased. Did not share the TAT for refund. be little energetic on call could have checked what size cx purchased from Tanishq could have informed about the store as cx said she wants to try and then buy refund TAT not shared."
+      },
+      {
+        "query": "Post sales",
+        "score": 100,
+        "comment": "cx was looking for the return due to size issue."
+      },
+      {
+        "query": "Return request",
+        "score": 88,
+        "comment": "Cx purchased two nose rings and wanted the same to be returned as she did not like the designs. JC pitched for exchange but cx said she did not like anything else. JC assisted with the return but did not inform the cx about the refund TAT cx had to ask for the same. Need to work on sharing information proactively. after saying really sorry to know there was a pause for few seconds as if the JC was confused what was to be said next."
+      },
+      {
+        "query": "order status",
+        "score": 83,
+        "comment": "Customer wanted to check if her order could be delivered by 30th July. AOI - need to work on using more positive and better phrases. We can try but cannot guarantee-  We’ll definitely push to get your order to you by July 30th! We can’t 100% guarantee it, but we’ll do our absolute best"
+      },
+      {
+        "query": "Order status",
+        "score": 94,
+        "comment": "Cx was looking for the status of her order as she received the message that the address was incorrect."
+      },
+      {
+        "query": "order status",
+        "score": 38,
+        "comment": "Customer called to check on the status of her order as the delivery was delayed. AOI- lack of empathy, BOD given for follow up. no empathy for the delay in delivery when cx said it was to be delivered on long back. said will follow up on Monday no follow up seen"
+      }
+    ],
+    "paramCaseMap": {
+      "ss": [
+        4,
+        6,
+        7,
+        9
+      ],
+      "cc": [
+        0,
+        2,
+        3,
+        8
+      ],
+      "prob": [
+        4
+      ],
+      "sol": [
+        0,
+        4,
+        9
+      ],
+      "fu": [
+        9
+      ],
+      "tag": [
+        2,
+        3
+      ]
+    }
   },
-  devadharshinid: {
-    name: "Devadharshini_D",
-    initials: "DD",
-    color: "#0891b2",
-    cq: 84,
-    audits: 10,
-    ncf: 2,
-    totalErrors: 13,
-    params: {"ss": 2, "sol": 4, "prob": 0, "tag": 2, "fu": 5},
-    aois: [{"cat": "Follow Up", "label": "Follow up not done", "text": "Occurred 4 time(s) this month."}, {"cat": "Solution", "label": "Failed to take ownership on resolution", "text": "Occurred 3 time(s) this month."}, {"cat": "Tagging", "label": "Incorrect Dispostions selected", "text": "Occurred 2 time(s) this month."}],
-    cases: [{"query": "Customisation existing design", "score": 0, "comment": "Cx was looking for a classic diamond ring in size 4.5. JC informed the same can't be customised. However, in the previous chat informed that since option is not available in the website will be placing a backend order."}, {"query": "Refund status", "score": 100, "comment": "Cx called to check on the status of her refund."}, {"query": "Customisation existing design", "score": 40, "comment": "Cx was looking for a mangalsutra to be customised. JC missed to follow up in 24hrs. No multiple follow up done"}, {"query": "MTO Order", "score": 75, "comment": "Cx was looking for an earrings and wanted to check if the same could be made as it was showing out of stock. AOI- no multiple follow up done. Incorrect tagging."}, {"query": "Customisation existing design", "score": 88, "comment": "Cx was looking for a customisation of a ring in 14kt. JC informed the same is not possible and shared alternative options available in 14kt with the customer. AOI- incorrect tagging."}, {"query": "SKU related", "score": 100, "comment": "Cx wanted to check if a particular design could be customised if the same goes out of stock in couple months when she looks to place the order."}, {"query": "Customisation existing design", "score": 0, "comment": "Cx was looking for a ring in size 7. AOI- lead not updated in the tracker and follow up status mentioned."}, {"query": "Lifetime Exchange", "score": 88, "comment": "Cx was looking for the exchange value of a previously purchased jewellery. AOI- the ticket was missed to be addressed."}, {"query": "Jewellery selection", "score": 100, "comment": "Cx was looking for hoop earrings for the second piercing."}, {"query": "Offers & Discounts", "score": 80, "comment": "Cx had been looking for the TATA employee discount. JC assisted the cx with the details but failed to do follow up as per the process."}],
-    paramCaseMap: {"ss": [2, 7], "prob": [], "sol": [0, 2, 6], "fu": [2, 3, 6, 9], "tag": [3, 4]},
+  "pooja": {
+    "name": "Pooja",
+    "initials": "PO",
+    "color": "#ea580c",
+    "cq": 67,
+    "audits": 5,
+    "ncf": 0,
+    "totalErrors": 8,
+    "note": "Pooja scored 67% CQ this month across 5 audits, with no non conformances flagged.",
+    "params": {
+      "ss": 1,
+      "cc": 0,
+      "prob": 4,
+      "sol": 1,
+      "fu": 2,
+      "tag": 0
+    },
+    "aois": [
+      {
+        "cat": "sol",
+        "label": "Solution & Rec.",
+        "text": "1 instance(s) flagged this month under Solution & Rec.. Auditor notes: could have shared the ring size video of how to measure"
+      },
+      {
+        "cat": "prob",
+        "label": "Probing",
+        "text": "4 instance(s) flagged this month under Probing. Auditor notes: could have asekd for the ocasion and price range accordingly assisted the cx | ocasion not checked"
+      },
+      {
+        "cat": "ss",
+        "label": "Soft Skills",
+        "text": "1 instance(s) flagged this month under Soft Skills. Auditor notes: no empathy when cx said she had not received the label for the return."
+      },
+      {
+        "cat": "fu",
+        "label": "Follow Up",
+        "text": "2 instance(s) flagged this month under Follow Up. Auditor notes: multiple follow up not done | no follow up done"
+      }
+    ],
+    "cases": [
+      {
+        "query": "SKU related",
+        "score": 40,
+        "comment": "Cx was looking to place the order the JC informed the design was out of stock. Cx asked to share alternate designs but no designs shared and no probing on chat to understand the cx requirement better. could have asekd for the ocasion and price range accordingly assisted the cx multiple follow up not done"
+      },
+      {
+        "query": "Jewellery selection",
+        "score": 70,
+        "comment": "Cx was looking for the pendants for men. AOI - no follow up seen. ocasion not checked no follow up done"
+      },
+      {
+        "query": "Return request",
+        "score": 75,
+        "comment": "Cx had a return raised for which she had not received the label. JC raised a return label request. AOI- retention efforts could have been more. no empathy when cx said she had not received the label for the return."
+      },
+      {
+        "query": "Ring size guidance",
+        "score": 75,
+        "comment": "Cx was looking for the help with ring size. AOI - lack of ownership c-live not pitched"
+      },
+      {
+        "query": "offers & Discount",
+        "score": 75,
+        "comment": "Cx was looking to place the order. AOI - Lack of SKU probing."
+      }
+    ],
+    "paramCaseMap": {
+      "ss": [
+        2
+      ],
+      "cc": [],
+      "prob": [
+        0,
+        1,
+        3,
+        4
+      ],
+      "sol": [
+        0
+      ],
+      "fu": [
+        0,
+        1
+      ],
+      "tag": []
+    }
   },
+  "soundarya": {
+    "name": "Soundarya",
+    "initials": "SO",
+    "color": "#db2777",
+    "cq": 67,
+    "audits": 5,
+    "ncf": 1,
+    "totalErrors": 6,
+    "note": "Soundarya scored 67% CQ this month across 5 audits, with 1 non conformance(s) flagged.",
+    "params": {
+      "ss": 1,
+      "cc": 1,
+      "prob": 1,
+      "sol": 0,
+      "fu": 3,
+      "tag": 0
+    },
+    "aois": [
+      {
+        "cat": "prob",
+        "label": "Probing",
+        "text": "1 instance(s) flagged this month under Probing."
+      },
+      {
+        "cat": "ss",
+        "label": "Soft Skills",
+        "text": "1 instance(s) flagged this month under Soft Skills. Auditor notes: ob call well-being could have been checked"
+      },
+      {
+        "cat": "fu",
+        "label": "Follow Up",
+        "text": "3 instance(s) flagged this month under Follow Up. Auditor notes: not added in H&W lead sheet | not added in h&w sheet"
+      },
+      {
+        "cat": "cc",
+        "label": "Call/Chat Etiquette",
+        "text": "1 instance(s) flagged this month under Call/Chat Etiquette. Auditor notes: no proper closure of chat"
+      }
+    ],
+    "cases": [
+      {
+        "query": "Presales",
+        "score": 90,
+        "comment": "cx was looking for a customised men studs. AOI - not added in H&W lead sheet."
+      },
+      {
+        "query": "Customisation existing design",
+        "score": 0,
+        "comment": "Cx was looking for a mangalsutra and wanted the same to be customised. AOI- JC did not close the chat properly and no follow up seen. no proper closure of chat not added in h&w sheet"
+      },
+      {
+        "query": "PoP redemption",
+        "score": 88,
+        "comment": "Ob call  made to check on the redemption purchase. Cx asked JC to call back the next day. ob call well-being could have been checked"
+      },
+      {
+        "query": "C-live request",
+        "score": 80,
+        "comment": "Cx had placed a request for C-live. JC  called to confirm on the same. AOI - no follow up status update in H&W sheet. no follow up status updated in H&W sheet"
+      },
+      {
+        "query": "Shipping related",
+        "score": 75,
+        "comment": "Cx wanted to check on shipping fee. JC assisted the cx with the details, but missed to pitch for C-Live."
+      }
+    ],
+    "paramCaseMap": {
+      "ss": [
+        2
+      ],
+      "cc": [
+        1
+      ],
+      "prob": [
+        4
+      ],
+      "sol": [],
+      "fu": [
+        0,
+        1,
+        3
+      ],
+      "tag": []
+    }
+  },
+  "hiten": {
+    "name": "Hiten_K",
+    "initials": "HK",
+    "color": "#4f46e5",
+    "cq": 66,
+    "audits": 10,
+    "ncf": 0,
+    "totalErrors": 20,
+    "note": "Hiten K scored 66% CQ this month across 10 audits, with no non conformances flagged.",
+    "params": {
+      "ss": 3,
+      "cc": 4,
+      "prob": 4,
+      "sol": 5,
+      "fu": 4,
+      "tag": 0
+    },
+    "aois": [
+      {
+        "cat": "sol",
+        "label": "Solution & Rec.",
+        "text": "5 instance(s) flagged this month under Solution & Rec.. Auditor notes: initially when cx asked JC if he could suggest designs which are available in 2 QTY. | could have mentioned the weight of the design than just sending the pics again and again"
+      },
+      {
+        "cat": "prob",
+        "label": "Probing",
+        "text": "4 instance(s) flagged this month under Probing. Auditor notes: could have checked if would like to check out 18kt designs to avail the offer | did not check if cx is interested in placing the order."
+      },
+      {
+        "cat": "ss",
+        "label": "Soft Skills",
+        "text": "3 instance(s) flagged this month under Soft Skills. Auditor notes: cx said she is facing an error no empathy | long dead air observed"
+      },
+      {
+        "cat": "fu",
+        "label": "Follow Up",
+        "text": "4 instance(s) flagged this month under Follow Up. Auditor notes: could have called the cx | follow not seen"
+      },
+      {
+        "cat": "cc",
+        "label": "Call/Chat Etiquette",
+        "text": "4 instance(s) flagged this month under Call/Chat Etiquette. Auditor notes: delayed responses | responses were delayed"
+      }
+    ],
+    "cases": [
+      {
+        "query": "Offers & Discounts",
+        "score": 90,
+        "comment": "Cx wanted to know about the offers if any. JC assisted with the offer details. AOI - delayed responses observed."
+      },
+      {
+        "query": "Offers & Discounts",
+        "score": 88,
+        "comment": "cx was looking for a 22kt design and wanted to check about the coupon usage on the same. could have checked if would like to check out 18kt designs to avail the offer"
+      },
+      {
+        "query": "SKU Related",
+        "score": 40,
+        "comment": "cx was looking for a earring but was facing error placing order onlie. JC said will check and get back on WA no update seen on H&W sheet. AOI - awaiting for WA proof for follow up. cx said she is facing an error no empathy long dead air observed"
+      },
+      {
+        "query": "RTS delivery date",
+        "score": 60,
+        "comment": "Cx was looking for the design with early delivery. JC assisted with the details but did not check by when cx would be placing the order. FU not done. did not check if cx is interested in placing the order. initially when cx asked JC if he could suggest designs which are available in 2 QTY."
+      },
+      {
+        "query": "Loyalty points",
+        "score": 63,
+        "comment": "Cx came on email for points which were not credited for posting a jewellery review. JC unncessarily kept dragging by asking for 8-12 hrs then again 12hrs. could have called the cx"
+      },
+      {
+        "query": "Order status",
+        "score": 17,
+        "comment": "Cx was looking for the status of the order. JC informed the cx that he would connect with the concerned team. Placed call on mute instead for a long time and came informing the customer that he had arranged a call back. Could have just shared the infor too on delivery date and if any complicated query then could have told as informed the concerned team shall back and assist better. AOI- lack of ownership. long mute"
+      },
+      {
+        "query": "Sku related",
+        "score": 35,
+        "comment": "CX wanted to know the weight of a particular sku. JC kept sharing the snips of the design than explicitly sharing the details. Lack of relevant probing. No follow up done. sending all the messages in one go before probing is not right way did not probe the ocasion of purchase. could have mentioned the weight of the design than just sending the pics again and again follow not seen"
+      },
+      {
+        "query": "Presales",
+        "score": 63,
+        "comment": "Cx was looking for a customisation of existing design of an earring. JC raised the request. AOI - lack of probing and delayed responses. responses were delayed did not check for the reason of purchase"
+      },
+      {
+        "query": "LTE",
+        "score": 100,
+        "comment": "Cx was looking for the exchnage of an earring she came on chats just to enquire about the same."
+      },
+      {
+        "query": "Exchange policy",
+        "score": 100,
+        "comment": "cx was looking to exchange US purchase in India."
+      }
+    ],
+    "paramCaseMap": {
+      "ss": [
+        2,
+        5,
+        6
+      ],
+      "cc": [
+        0,
+        5,
+        6,
+        7
+      ],
+      "prob": [
+        1,
+        3,
+        6,
+        7
+      ],
+      "sol": [
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "fu": [
+        2,
+        3,
+        4,
+        6
+      ],
+      "tag": []
+    }
+  }
 };
 
-const PARAM_LABELS = { ss:'Soft Skills', sol:'Solution & Recommendation', prob:'Probing', tag:'Tagging', fu:'Follow Up' };
-const PARAM_COLORS = { ss:'#c8a846', sol:'#2563eb', prob:'#ea580c', tag:'#16a34a', fu:'#7c3aed' };
+const PARAM_LABELS = {"ss": "Soft Skills", "sol": "Solution & Rec.", "prob": "Probing", "fu": "Follow Up", "tag": "Tagging", "cc": "Call/Chat Etiquette"};
+const PARAM_COLORS = {"ss": "#ea580c", "sol": "#dc2626", "prob": "#2563eb", "fu": "#16a34a", "tag": "#7c3aed", "cc": "#0891b2"};

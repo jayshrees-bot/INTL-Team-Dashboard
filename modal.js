@@ -1,110 +1,131 @@
-const PARAM_ORDER = ['ss','prob','sol','fu','tag'];
-const PARAM_LABEL = {ss:'Soft Skills',prob:'Probing',sol:'Solution & Rec.',fu:'Follow Up',tag:'Tagging'};
-const PARAM_COLOR = {ss:'#c8a846',prob:'#ea580c',sol:'#2563eb',fu:'#16a34a',tag:'#7c3aed'};
-const AOI_COLORS = ['#c8a846','#ea580c','#2563eb'];
+function getScoreBadgeClass(s) {
+  if (s >= 90) return 'csb-high';
+  if (s >= 75) return 'csb-mid';
+  return 'csb-low';
+}
+
+function buildMetricsHTML(a) {
+  const sc = a.cq >= 90 ? 'gold' : a.cq >= 80 ? 'green' : 'orange';
+  return `
+    <div class="mm"><div class="mm-val ${sc}">${a.cq}%</div><div class="mm-lbl">CQ Score</div></div>
+    <div class="mm"><div class="mm-val white">${a.audits}</div><div class="mm-lbl">Audits</div></div>
+    <div class="mm"><div class="mm-val ${a.ncf > 0 ? 'red' : 'green'}">${a.ncf}</div><div class="mm-lbl">NCF</div></div>
+    <div class="mm"><div class="mm-val orange">${a.totalErrors}</div><div class="mm-lbl">Total Errors</div></div>
+    <div class="mm"><div class="mm-val red">${95 - a.cq}%</div><div class="mm-lbl">Gap to Target</div></div>`;
+}
+
+function buildModalBody(agentKey, highlightParam) {
+  const a = AGENTS[agentKey];
+  if (!a) return '';
+  let html = '';
+
+  const indivTarget = 85;
+  const teamTarget = 95;
+  const gap = indivTarget - a.cq;
+  const gc = a.cq >= 95 ? 'bar-green' : a.cq >= 90 ? 'bar-gold' : a.cq >= 85 ? 'bar-green' : 'bar-orange';
+  const gapText = gap > 0
+    ? `${gap}% below individual target (85%)`
+    : `✓ Individual target met · ${teamTarget - a.cq > 0 ? (teamTarget - a.cq) + '% to team target (95%)' : 'Team target met!'}`;
+  const pctColor = a.cq >= 90 ? '#b8860b' : a.cq >= 85 ? '#16a34a' : '#ea580c';
+
+  // Optional per agent note
+  if (a.note) {
+    html += `<div style="background:var(--blue-pale);border:1px solid var(--blue);border-radius:10px;padding:10px 14px;margin-bottom:12px;font-size:12px;color:var(--blue);"><strong>ℹ Note:</strong> ${a.note}</div>`;
+  }
+
+  html += `
+    <div class="modal-sec-lbl">CQ Score</div>
+    <div class="gauge-wrap">
+      <div style="flex:1;">
+        <div class="gauge-track">
+          <div class="bar-fill ${gc}" style="width:${a.cq}%;height:100%;border-radius:6px;transition:width 1.2s cubic-bezier(.4,0,.2,1);"></div>
+          <div class="gauge-target" style="left:85%;background:#f59e0b;" title="Individual Target 85%"></div>
+          <div style="position:absolute;top:-2px;bottom:-2px;left:95%;width:2px;background:#dc2626;border-radius:2px;" title="Team Target 95%"></div>
+        </div>
+        <div class="gauge-labels">
+          <span>0%</span>
+          <span style="color:#f59e0b;font-weight:700;">Indiv. 85%</span>
+          <span style="color:#dc2626;font-weight:700;">Team 95%</span>
+          <span>100%</span>
+        </div>
+      </div>
+      <div style="text-align:right;flex-shrink:0;min-width:70px;">
+        <div style="font-family:Georgia,serif;font-size:30px;font-weight:800;color:${pctColor};line-height:1;">${a.cq}%</div>
+        <div style="font-size:10px;color:#8a7a60;margin-top:2px;">${gapText}</div>
+      </div>
+    </div>`;
+
+  html += `<div class="modal-sec-lbl">Errors by Parameter</div><div class="param-mini-grid">`;
+  Object.entries(a.params).forEach(([k, v]) => {
+    const hl = k === highlightParam;
+    const color = PARAM_COLORS[k];
+    html += `<div class="pmg-item${hl ? ' pmg-hl' : ''}">
+      <div class="pmg-val" style="color:${v === 0 ? '#16a34a' : color};">${v === 0 ? '✓' : v}</div>
+      <div class="pmg-lbl">${PARAM_LABELS[k]}</div>
+    </div>`;
+  });
+  html += `</div>`;
+
+  html += `<div class="modal-sec-lbl">Areas of Improvement</div><div class="aoi-list">`;
+  a.aois.forEach(aoi => {
+    const c = PARAM_COLORS[aoi.cat];
+    html += `<div class="aoi-item" style="border-left-color:${c};">
+      <div class="aoi-cat" style="color:${c};">${aoi.label}</div>
+      <div class="aoi-text">${aoi.text}</div>
+    </div>`;
+  });
+  html += `</div>`;
+
+  html += `<div class="modal-sec-lbl">Audit Cases, ${a.audits} total${a.note ? ' (see note above)' : ''}</div>`;
+  a.cases.forEach((c, i) => {
+    const hl = highlightParam && a.paramCaseMap[highlightParam] && a.paramCaseMap[highlightParam].includes(i);
+    const sbClass = getScoreBadgeClass(c.score);
+    html += `<div class="case-card${hl ? ' case-hl' : ''}" id="case-${agentKey}-${i}">
+      <div class="case-hd">
+        <div class="case-query">${c.query}${hl ? ' <span class="case-flag">▶ Flagged</span>' : ''}</div>
+        <span class="case-badge ${sbClass}">${c.score}%</span>
+      </div>
+      <div class="case-text">${c.comment}</div>
+    </div>`;
+  });
+
+  html += `<div class="modal-sec-lbl">What To Do Better</div>
+    <div class="better-box">`;
+  a.aois.forEach(aoi => {
+    html += `<div class="better-item"><span class="better-arrow">▸</span>${aoi.text}</div>`;
+  });
+  html += `</div>`;
+
+  return html;
+}
 
 function openModal(agentKey, highlightParam) {
-  const agent = AGENTS[agentKey];
-  if (!agent) return;
-
-  // Header metrics
-  document.getElementById('m-name').textContent = agent.name;
-  document.getElementById('m-role').textContent = 'INTL · March 2026 · Quality Report';
-
-  const cqClass = agent.cq >= 90 ? 'gold' : agent.cq >= 80 ? 'gold' : 'orange';
-  const ncfClass = agent.ncf === 0 ? 'green' : 'red';
-  const errClass = agent.totalErrors <= 10 ? 'green' : agent.totalErrors <= 25 ? 'orange' : 'red';
-  document.getElementById('m-metrics').innerHTML = `
-    <div class="mm"><div class="mm-val ${cqClass}">${agent.cq}%</div><div class="mm-lbl">CQ Score</div></div>
-    <div class="mm"><div class="mm-val white">${agent.audits}</div><div class="mm-lbl">Audits</div></div>
-    <div class="mm"><div class="mm-val ${ncfClass}">${agent.ncf}</div><div class="mm-lbl">NCF</div></div>
-    <div class="mm"><div class="mm-val ${errClass}">${agent.totalErrors}</div><div class="mm-lbl">Errors</div></div>
-  `;
-
-  const target = 95;
-  const gap = target - agent.cq;
-  const gapTxt = gap > 0 ? `${gap}% below target` : gap === 0 ? 'At target ✓' : `${Math.abs(gap)}% above target`;
-  const gapCol = gap > 10 ? '#f87171' : gap > 0 ? '#e8c86a' : '#4ade80';
-  const barW = Math.min(100, agent.cq);
-  const targetPct = target;
-
-  // Param mini-grid
-  const miniGrid = PARAM_ORDER.map(p => {
-    const v = agent.params[p];
-    const isHl = highlightParam === p;
-    const col = v === 0 ? '#4ade80' : v <= 3 ? '#e8c86a' : '#f87171';
-    return `<div class="pmg-item${isHl ? ' pmg-hl' : ''}">
-      <div class="pmg-val" style="color:${col}">${v}</div>
-      <div class="pmg-lbl">${PARAM_LABEL[p]}</div>
-    </div>`;
-  }).join('');
-
-  // AOIs
-  const aoisHtml = agent.aois.map((aoi, i) => `
-    <div class="aoi-item" style="border-left-color:${AOI_COLORS[i]}">
-      <div class="aoi-cat" style="color:${AOI_COLORS[i]}">${aoi.cat}</div>
-      <div class="aoi-text"><strong>${aoi.label}</strong> — ${aoi.text}</div>
-    </div>`).join('');
-
-  // Cases
-  const hlCases = highlightParam ? (agent.paramCaseMap[highlightParam] || []) : [];
-  const casesHtml = agent.cases.map((c, i) => {
-    const isHl = hlCases.includes(i);
-    const badgeCls = c.score >= 90 ? 'csb-high' : c.score >= 80 ? 'csb-mid' : 'csb-low';
-    const isNcf = c.ncf > 0;
-    return `<div class="case-card${isHl ? ' case-hl' : ''}">
-      <div class="case-hd">
-        <span class="case-query">#${i+1} — ${c.query}${isNcf ? '<span class="case-flag"> ⚑ NCF</span>' : ''}${isHl ? '<span class="case-flag"> ★ highlighted</span>' : ''}</span>
-        <span class="case-badge ${badgeCls}">${c.score}%</span>
-      </div>
-      <div class="case-text">${c.comment || '—'}</div>
-    </div>`;
-  }).join('');
-
-  // Focus area
-  const worstP = PARAM_ORDER.reduce((best, p) => agent.params[p] > agent.params[best] ? p : best, 'ss');
-  const worstCount = agent.params[worstP];
-
-  document.getElementById('m-body').innerHTML = `
-    <div class="modal-sec-lbl">CQ Score vs Target</div>
-    <div class="gauge-wrap" style="flex-direction:column;gap:8px;">
-      <div style="width:100%">
-        <div class="gauge-track" style="width:100%;position:relative;">
-          <div style="height:100%;width:${barW}%;background:linear-gradient(90deg,#c8a846,#e8c86a);border-radius:6px;transition:width 1s ease;"></div>
-          <div class="gauge-target" style="left:${targetPct}%;background:#dc2626;"></div>
-        </div>
-        <div class="gauge-labels"><span>0%</span><span style="color:#dc2626;">🎯 95% target</span><span>100%</span></div>
-      </div>
-      <div style="font-size:13px;color:var(--txt2);text-align:center;">
-        <strong style="color:${gapCol}">${gapTxt}</strong>
-      </div>
-    </div>
-
-    <div class="modal-sec-lbl">Parameter Breakdown</div>
-    <div class="param-mini-grid">${miniGrid}</div>
-
-    <div class="modal-sec-lbl">Areas of Improvement</div>
-    <div class="aoi-list">${aoisHtml}</div>
-
-    <div class="modal-sec-lbl">
-      Audit Cases${highlightParam ? ` — ${PARAM_LABEL[highlightParam]} highlighted` : ''} (${agent.cases.length} total)
-    </div>
-    ${casesHtml}
-
-    <div class="modal-sec-lbl">What to Focus On</div>
-    <div class="better-box">
-      <div class="better-item"><span class="better-arrow">›</span> Primary focus: <strong>${PARAM_LABEL[worstP]}</strong> — ${worstCount} error(s) this month. ${worstCount > 10 ? 'Needs immediate attention and targeted coaching.' : worstCount > 5 ? 'Consistent improvement sessions recommended.' : 'Keep working on this area for steady progress.'}</div>
-      <div class="better-item"><span class="better-arrow">›</span> CQ is ${gap > 0 ? `${gap}% below the 95% target` : 'at or above target'}. ${gap > 10 ? 'Significant focused effort needed.' : gap > 0 ? 'Achievable with consistent effort.' : 'Maintain this standard.'}</div>
-      <div class="better-item"><span class="better-arrow">›</span> ${agent.ncf === 0 ? 'Zero NCF — excellent discipline in maintaining CaratLane-friendly interactions.' : `${agent.ncf} NCF case(s) — review flagged interactions urgently.`}</div>
-    </div>
-  `;
-
-  const overlay = document.getElementById('modal-overlay');
-  overlay.classList.add('open');
+  const a = AGENTS[agentKey];
+  if (!a) return;
+  document.getElementById('m-name').textContent = a.name;
+  document.getElementById('m-role').textContent = 'International Team · July 2026';
+  document.getElementById('m-metrics').innerHTML = buildMetricsHTML(a);
+  document.getElementById('m-body').innerHTML = buildModalBody(agentKey, highlightParam || null);
+  document.getElementById('modal-overlay').classList.add('open');
   document.body.style.overflow = 'hidden';
+  if (highlightParam) {
+    setTimeout(() => {
+      const first = document.querySelector('.case-hl');
+      if (first) first.scrollIntoView({behavior:'smooth', block:'center'});
+    }, 300);
+  } else {
+    document.getElementById('m-body').scrollTop = 0;
+  }
 }
 
 function closeModal() {
   document.getElementById('modal-overlay').classList.remove('open');
   document.body.style.overflow = '';
 }
+
+document.addEventListener('DOMContentLoaded', () => {
+  document.getElementById('modal-overlay').addEventListener('click', function(e) {
+    if (e.target === this) closeModal();
+  });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+});
