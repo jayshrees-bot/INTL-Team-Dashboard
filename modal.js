@@ -11,7 +11,7 @@ function buildMetricsHTML(a) {
     <div class="mm"><div class="mm-val white">${a.audits}</div><div class="mm-lbl">Audits</div></div>
     <div class="mm"><div class="mm-val ${a.ncf > 0 ? 'red' : 'green'}">${a.ncf}</div><div class="mm-lbl">NCF</div></div>
     <div class="mm"><div class="mm-val orange">${a.totalErrors}</div><div class="mm-lbl">Total Errors</div></div>
-    <div class="mm"><div class="mm-val red">${95 - a.cq}%</div><div class="mm-lbl">Gap to Target</div></div>`;
+    <div class="mm"><div class="mm-val red">${Math.max(0, 85 - a.cq)}%</div><div class="mm-lbl">Gap to Target</div></div>`;
 }
 
 function buildModalBody(agentKey, highlightParam) {
@@ -20,12 +20,11 @@ function buildModalBody(agentKey, highlightParam) {
   let html = '';
 
   const indivTarget = 85;
-  const teamTarget = 95;
   const gap = indivTarget - a.cq;
-  const gc = a.cq >= 95 ? 'bar-green' : a.cq >= 90 ? 'bar-gold' : a.cq >= 85 ? 'bar-green' : 'bar-orange';
+  const gc = a.cq >= 90 ? 'bar-gold' : a.cq >= 85 ? 'bar-green' : 'bar-orange';
   const gapText = gap > 0
     ? `${gap}% below individual target (85%)`
-    : `✓ Individual target met · ${teamTarget - a.cq > 0 ? (teamTarget - a.cq) + '% to team target (95%)' : 'Team target met!'}`;
+    : `✓ Individual target met!`;
   const pctColor = a.cq >= 90 ? '#b8860b' : a.cq >= 85 ? '#16a34a' : '#ea580c';
 
   // Optional per agent note
@@ -40,12 +39,10 @@ function buildModalBody(agentKey, highlightParam) {
         <div class="gauge-track">
           <div class="bar-fill ${gc}" style="width:${a.cq}%;height:100%;border-radius:6px;transition:width 1.2s cubic-bezier(.4,0,.2,1);"></div>
           <div class="gauge-target" style="left:85%;background:#f59e0b;" title="Individual Target 85%"></div>
-          <div style="position:absolute;top:-2px;bottom:-2px;left:95%;width:2px;background:#dc2626;border-radius:2px;" title="Team Target 95%"></div>
         </div>
         <div class="gauge-labels">
           <span>0%</span>
           <span style="color:#f59e0b;font-weight:700;">Indiv. 85%</span>
-          <span style="color:#dc2626;font-weight:700;">Team 95%</span>
           <span>100%</span>
         </div>
       </div>

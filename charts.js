@@ -14,8 +14,8 @@ function agentsSortedByCQ() {
 }
 
 function scoreBarColor(cq) {
-  if (cq >= 95) return '#16a34a'; // green — at/above team target
-  if (cq >= 85) return '#c8a846'; // gold — above individual target
+  if (cq >= 90) return '#16a34a'; // green — well above individual target
+  if (cq >= 85) return '#c8a846'; // gold — at/above individual target
   return '#dc2626';               // red — below individual target
 }
 
@@ -45,12 +45,6 @@ function initCharts() {
           barPercentage: 0.6,
           categoryPercentage: 0.75,
           order: 2
-        },
-        {
-          label: 'Team Target 95%',
-          data: sorted.map(() => 95),
-          type: 'line', borderColor: '#dc2626', borderWidth: 2,
-          borderDash: [6,4], pointRadius: 0, fill: false, order: 1
         },
         {
           label: 'Individual Target 85%',
