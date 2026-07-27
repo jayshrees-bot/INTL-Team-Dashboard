@@ -1,5 +1,5 @@
 /* ============================================================
-   International Team — CQ Audit Data — July 2026 (corrected)
+   International Team — CQ Audit Data — July 2026 (revised)
    Auditor: Jayshree · Source: raw audit sheet export (68 audits, 8 agents)
    ------------------------------------------------------------
    Regenerate this file the same way each month: export the raw
@@ -16,26 +16,21 @@ const AGENTS = {
     "cq": 90,
     "audits": 10,
     "ncf": 0,
-    "totalErrors": 8,
+    "totalErrors": 10,
     "note": "Uzair K scored 90% this month across 10 audits, with no non conformances flagged.",
     "params": {
       "ss": 1,
-      "cc": 3,
+      "cc": 4,
       "prob": 2,
-      "sol": 1,
+      "sol": 2,
       "fu": 0,
       "tag": 1
     },
     "aois": [
       {
-        "cat": "tag",
-        "label": "Tagging",
-        "text": "1 instance(s) flagged this month under Tagging. Auditor notes: new design but tagged as searching BOD given"
-      },
-      {
-        "cat": "sol",
-        "label": "Solution & Rec.",
-        "text": "1 instance(s) flagged this month under Solution & Rec.. Auditor notes: offer not shared | could have recommended few designs which are same in men's and women category"
+        "cat": "cc",
+        "label": "Call/Chat Etiquette",
+        "text": "4 instance(s) flagged this month under Call/Chat Etiquette. Auditor notes: after 8:48pm the JC started probing question at 9:05pm by the time when cx had already left. | there was a pause at the start | delayed response other JC had to intervene"
       },
       {
         "cat": "prob",
@@ -43,14 +38,19 @@ const AGENTS = {
         "text": "2 instance(s) flagged this month under Probing. Auditor notes: did not check for the ocasiom | could have asked the cx to select the design she likes to assist with the size details."
       },
       {
+        "cat": "sol",
+        "label": "Solution & Rec.",
+        "text": "2 instance(s) flagged this month under Solution & Rec.. Auditor notes: offer not shared | could have recommended few designs which are same in men's and women category"
+      },
+      {
         "cat": "ss",
         "label": "Soft Skills",
         "text": "1 instance(s) flagged this month under Soft Skills. Auditor notes: saying we are trying to have connections in Canada could have been better phrased like we are looking to expand something like that and cx was constantly saying she would love to have CL in Canada. JC could have thanked the cx saying we are really happy to know that you like our brand and jewellery no acknowledgement on the same."
       },
       {
-        "cat": "cc",
-        "label": "Call/Chat Etiquette",
-        "text": "3 instance(s) flagged this month under Call/Chat Etiquette. Auditor notes: after 8:48pm the JC started probing question at 9:05pm by the time when cx had already left. | there was a pause at the start"
+        "cat": "tag",
+        "label": "Tagging",
+        "text": "1 instance(s) flagged this month under Tagging. Auditor notes: new design but tagged as searching BOD given"
       }
     ],
     "cases": [
@@ -127,95 +127,80 @@ const AGENTS = {
       ]
     }
   },
-  "aanchal": {
-    "name": "Aanchal_M",
-    "initials": "AM",
-    "color": "#c8a846",
-    "cq": 83,
-    "audits": 8,
-    "ncf": 1,
+  "soundarya": {
+    "name": "Soundarya",
+    "initials": "SO",
+    "color": "#ea580c",
+    "cq": 87,
+    "audits": 5,
+    "ncf": 0,
     "totalErrors": 4,
-    "note": "Aanchal M scored 83% this month across 8 audits, with 1 non conformance(s) flagged.",
+    "note": "Soundarya scored 87% this month across 5 audits, with no non conformances flagged.",
     "params": {
-      "ss": 0,
-      "cc": 1,
+      "ss": 1,
+      "cc": 0,
       "prob": 1,
-      "sol": 2,
-      "fu": 0,
+      "sol": 0,
+      "fu": 2,
       "tag": 0
     },
     "aois": [
       {
-        "cat": "sol",
-        "label": "Solution & Rec.",
-        "text": "2 instance(s) flagged this month under Solution & Rec.. Auditor notes: did not share the store address"
+        "cat": "fu",
+        "label": "Follow Up",
+        "text": "2 instance(s) flagged this month under Follow Up. Auditor notes: no follow up status updated in H&W sheet | not added in H&W lead sheet"
+      },
+      {
+        "cat": "ss",
+        "label": "Soft Skills",
+        "text": "1 instance(s) flagged this month under Soft Skills. Auditor notes: ob call well-being could have been checked"
       },
       {
         "cat": "prob",
         "label": "Probing",
-        "text": "1 instance(s) flagged this month under Probing. Auditor notes: probing to be done at the right time"
-      },
-      {
-        "cat": "cc",
-        "label": "Call/Chat Etiquette",
-        "text": "1 instance(s) flagged this month under Call/Chat Etiquette. Auditor notes: went on break while the chat was active atleast could have shared the offer details or asked someone else to take the chat."
+        "text": "1 instance(s) flagged this month under Probing. Auditor notes: "
       }
     ],
     "cases": [
       {
+        "query": "Exchange policy",
+        "score": 100,
+        "comment": "Cx was looking for a mangalsutra and wanted the same to be customised."
+      },
+      {
+        "query": "Shipping related",
+        "score": 75,
+        "comment": "Cx wanted to check on shipping fee. JC assisted the cx with the details, but missed to pitch for C-Live."
+      },
+      {
+        "query": "C-live request",
+        "score": 80,
+        "comment": "Cx had placed a request for C-live. JC  called to confirm on the same. AOI - no follow up status update in H&W sheet. no follow up status updated in H&W sheet"
+      },
+      {
         "query": "PoP redemption",
-        "score": 100,
-        "comment": "Cx was looking to place the order using her POP."
+        "score": 88,
+        "comment": "Ob call  made to check on the redemption purchase. Cx asked JC to call back the next day. ob call well-being could have been checked"
       },
       {
-        "query": "Repair  Genral enquiry",
-        "score": 100,
-        "comment": "customer was looking for the repair of a non-CL jewellery. JC politely denied the same."
-      },
-      {
-        "query": "Jewellery selection",
-        "score": 100,
-        "comment": "Cx was looking for a chain and pendant. JC assisted the cx with the details."
-      },
-      {
-        "query": "offers & discounts",
-        "score": 0,
-        "comment": "cx was looking for the TCS employee discount. JC informed the customer to allow sometime to share the details about the discount %. JC then went for break and replied back after 50mins. By then the customer had become inactive. went on break while the chat was active atleast could have shared the offer details or asked someone else to take the chat."
-      },
-      {
-        "query": "Wants to place the order",
-        "score": 100,
-        "comment": "customer was looking for baby nazaria bracelet. and was looking for the delivery at the earliest. JC assisted the cx with online delivery date and assisted the cx in placing the order online and expediting the same."
-      },
-      {
-        "query": "Jewellery selection",
-        "score": 100,
-        "comment": "Cx had selected two designs but wanted to check if the same was available in rose gold. JC informed the customer that the same is available in RG post which cx became inactive."
-      },
-      {
-        "query": "customisation existing design",
-        "score": 100,
-        "comment": "Cx was looking for a ring and shared a specific size. JC shared the details but cx became inactive."
-      },
-      {
-        "query": "Customisation existing design",
-        "score": 63,
-        "comment": "cx was lookimg for a earrings and wanted the shipping fee to be waived. JC informed cx that she could visit the store for the same. Pitched POP also however missed to share the address. Missed to probe at the right time did the probing at the end after giving closure message. probing to be done at the right time did not share the store address"
+        "query": "Presales",
+        "score": 90,
+        "comment": "cx was looking for a customised men studs. AOI - not added in H&W lead sheet. not added in H&W lead sheet"
       }
     ],
     "paramCaseMap": {
-      "ss": [],
-      "cc": [
+      "ss": [
         3
       ],
+      "cc": [],
       "prob": [
-        7
+        1
       ],
-      "sol": [
-        3,
-        7
+      "sol": [],
+      "fu": [
+        2,
+        4
       ],
-      "fu": [],
       "tag": []
     }
   },
@@ -226,10 +211,10 @@ const AGENTS = {
     "cq": 83,
     "audits": 10,
     "ncf": 0,
-    "totalErrors": 11,
+    "totalErrors": 12,
     "note": "Swetha R scored 83% this month across 10 audits, with no non conformances flagged.",
     "params": {
-      "ss": 3,
+      "ss": 4,
       "cc": 3,
       "prob": 3,
       "sol": 1,
@@ -238,29 +223,29 @@ const AGENTS = {
     },
     "aois": [
       {
+        "cat": "ss",
+        "label": "Soft Skills",
+        "text": "4 instance(s) flagged this month under Soft Skills. Auditor notes: kept the intelliassign on as the chat was auto assigned and cx had to wait for the response while the JC was on break | placed on mute cx was asking are u there | need to work on objection handling | when cx said she did not get the refund could have been empathetic"
+      },
+      {
+        "cat": "cc",
+        "label": "Call/Chat Etiquette",
+        "text": "3 instance(s) flagged this month under Call/Chat Etiquette. Auditor notes: ensure while on break ur not active on chats | at 11:18 cx replied JC responded at 11:27 | delayed response at 9:23 pm cx had to seek response"
+      },
+      {
+        "cat": "prob",
+        "label": "Probing",
+        "text": "3 instance(s) flagged this month under Probing. Auditor notes: could have asked for order # | could have understood the reason for the return | could have pitched for store when cx said she would want to try and then buy"
+      },
+      {
         "cat": "sol",
         "label": "Solution & Rec.",
         "text": "1 instance(s) flagged this month under Solution & Rec.. Auditor notes: need to work on retention efforts"
       },
       {
-        "cat": "prob",
-        "label": "Probing",
-        "text": "3 instance(s) flagged this month under Probing. Auditor notes: could have asked for order # | could have understood the reason for the return"
-      },
-      {
-        "cat": "ss",
-        "label": "Soft Skills",
-        "text": "3 instance(s) flagged this month under Soft Skills. Auditor notes: kept the intelliassign on as the chat was auto assigned and cx had to wait for the response while the JC was on break | placed on mute cx was asking are u there"
-      },
-      {
         "cat": "fu",
         "label": "Follow Up",
-        "text": "1 instance(s) flagged this month under Follow Up."
-      },
-      {
-        "cat": "cc",
-        "label": "Call/Chat Etiquette",
-        "text": "3 instance(s) flagged this month under Call/Chat Etiquette. Auditor notes: ensure while on break ur not active on chats | at 11:18 cx replied JC responded at 11:27"
+        "text": "1 instance(s) flagged this month under Follow Up. Auditor notes: "
       }
     ],
     "cases": [
@@ -340,6 +325,98 @@ const AGENTS = {
       "tag": []
     }
   },
+  "aanchal": {
+    "name": "Aanchal_M",
+    "initials": "AM",
+    "color": "#c8a846",
+    "cq": 83,
+    "audits": 8,
+    "ncf": 1,
+    "totalErrors": 4,
+    "note": "Aanchal M scored 83% this month across 8 audits, with 1 non conformance(s) flagged.",
+    "params": {
+      "ss": 0,
+      "cc": 1,
+      "prob": 1,
+      "sol": 2,
+      "fu": 0,
+      "tag": 0
+    },
+    "aois": [
+      {
+        "cat": "sol",
+        "label": "Solution & Rec.",
+        "text": "2 instance(s) flagged this month under Solution & Rec.. Auditor notes: did not share the store address"
+      },
+      {
+        "cat": "cc",
+        "label": "Call/Chat Etiquette",
+        "text": "1 instance(s) flagged this month under Call/Chat Etiquette. Auditor notes: went on break while the chat was active atleast could have shared the offer details or asked someone else to take the chat."
+      },
+      {
+        "cat": "prob",
+        "label": "Probing",
+        "text": "1 instance(s) flagged this month under Probing. Auditor notes: probing to be done at the right time"
+      }
+    ],
+    "cases": [
+      {
+        "query": "PoP redemption",
+        "score": 100,
+        "comment": "Cx was looking to place the order using her POP."
+      },
+      {
+        "query": "Repair  Genral enquiry",
+        "score": 100,
+        "comment": "customer was looking for the repair of a non-CL jewellery. JC politely denied the same."
+      },
+      {
+        "query": "Jewellery selection",
+        "score": 100,
+        "comment": "Cx was looking for a chain and pendant. JC assisted the cx with the details."
+      },
+      {
+        "query": "offers & discounts",
+        "score": 0,
+        "comment": "cx was looking for the TCS employee discount. JC informed the customer to allow sometime to share the details about the discount %. JC then went for break and replied back after 50mins. By then the customer had become inactive. went on break while the chat was active atleast could have shared the offer details or asked someone else to take the chat."
+      },
+      {
+        "query": "Wants to place the order",
+        "score": 100,
+        "comment": "customer was looking for baby nazaria bracelet. and was looking for the delivery at the earliest. JC assisted the cx with online delivery date and assisted the cx in placing the order online and expediting the same."
+      },
+      {
+        "query": "Jewellery selection",
+        "score": 100,
+        "comment": "Cx had selected two designs but wanted to check if the same was available in rose gold. JC informed the customer that the same is available in RG post which cx became inactive."
+      },
+      {
+        "query": "customisation existing design",
+        "score": 100,
+        "comment": "Cx was looking for a ring and shared a specific size. JC shared the details but cx became inactive."
+      },
+      {
+        "query": "Customisation existing design",
+        "score": 63,
+        "comment": "cx was lookimg for a earrings and wanted the shipping fee to be waived. JC informed cx that she could visit the store for the same. Pitched POP also however missed to share the address. Missed to probe at the right time did the probing at the end after giving closure message. probing to be done at the right time did not share the store address"
+      }
+    ],
+    "paramCaseMap": {
+      "ss": [],
+      "cc": [
+        3
+      ],
+      "prob": [
+        7
+      ],
+      "sol": [
+        3,
+        7
+      ],
+      "fu": [],
+      "tag": []
+    }
+  },
   "devadharshini": {
     "name": "Devadharshini_D",
     "initials": "DD",
@@ -359,19 +436,14 @@ const AGENTS = {
     },
     "aois": [
       {
-        "cat": "tag",
-        "label": "Tagging",
-        "text": "1 instance(s) flagged this month under Tagging."
+        "cat": "ss",
+        "label": "Soft Skills",
+        "text": "3 instance(s) flagged this month under Soft Skills. Auditor notes: cx said she lost the back stud no empathy | address cx either with name if not sir/ma'am. | Towards the end was not sounding friendly"
       },
       {
         "cat": "sol",
         "label": "Solution & Rec.",
         "text": "2 instance(s) flagged this month under Solution & Rec.. Auditor notes: always mention the TAT for QC and also how long it takes for the product to reach us to avoid repeat customer query."
-      },
-      {
-        "cat": "ss",
-        "label": "Soft Skills",
-        "text": "3 instance(s) flagged this month under Soft Skills. Auditor notes: cx said she lost the back stud no empathy | address cx either with name if not sir/ma'am."
       },
       {
         "cat": "fu",
@@ -382,6 +454,11 @@ const AGENTS = {
         "cat": "cc",
         "label": "Call/Chat Etiquette",
         "text": "1 instance(s) flagged this month under Call/Chat Etiquette. Auditor notes: said 10 mins but did not get back for more than an hr"
+      },
+      {
+        "cat": "tag",
+        "label": "Tagging",
+        "text": "1 instance(s) flagged this month under Tagging. Auditor notes: "
       }
     ],
     "cases": [
@@ -466,46 +543,46 @@ const AGENTS = {
     "cq": 70,
     "audits": 10,
     "ncf": 1,
-    "totalErrors": 15,
+    "totalErrors": 17,
     "note": "Prasad K scored 70% this month across 10 audits, with 1 non conformance(s) flagged.",
     "params": {
       "ss": 4,
       "cc": 4,
-      "prob": 1,
-      "sol": 3,
+      "prob": 2,
+      "sol": 4,
       "fu": 1,
       "tag": 2
     },
     "aois": [
+      {
+        "cat": "ss",
+        "label": "Soft Skills",
+        "text": "4 instance(s) flagged this month under Soft Skills. Auditor notes: no empathy for the delay in delivery when cx said it was to be delivered on long back. | We can try but cannot guarantee-  We\u2019ll definitely push to get your order to you by July 30th! We can\u2019t 100% guarantee it, but we\u2019ll do our absolute best | after saying really sorry to know there was a pause for few seconds as if the JC was confused what was to be said next. | be little energetic on call"
+      },
+      {
+        "cat": "cc",
+        "label": "Call/Chat Etiquette",
+        "text": "4 instance(s) flagged this month under Call/Chat Etiquette. Auditor notes: delayed response on chat | closure not done, multiple delayed responses (NCF BOD given) | delayed response by 50 mins"
+      },
+      {
+        "cat": "sol",
+        "label": "Solution & Rec.",
+        "text": "4 instance(s) flagged this month under Solution & Rec.. Auditor notes: said will follow up on Monday no follow up seen | could have informed about the store as cx said she wants to try and then buy | refund TAT not shared."
+      },
+      {
+        "cat": "prob",
+        "label": "Probing",
+        "text": "2 instance(s) flagged this month under Probing. Auditor notes: could have checked what size cx purchased from Tanishq | could have checked if the email was received or not"
+      },
       {
         "cat": "tag",
         "label": "Tagging",
         "text": "2 instance(s) flagged this month under Tagging. Auditor notes: price match not order status | lead not tagged"
       },
       {
-        "cat": "sol",
-        "label": "Solution & Rec.",
-        "text": "3 instance(s) flagged this month under Solution & Rec.. Auditor notes: said will follow up on Monday no follow up seen | could have informed about the store as cx said she wants to try and then buy"
-      },
-      {
-        "cat": "prob",
-        "label": "Probing",
-        "text": "1 instance(s) flagged this month under Probing. Auditor notes: could have checked what size cx purchased from Tanishq | could have checked if the email was received or not"
-      },
-      {
-        "cat": "ss",
-        "label": "Soft Skills",
-        "text": "4 instance(s) flagged this month under Soft Skills. Auditor notes: no empathy for the delay in delivery when cx said it was to be delivered on long back. | We can try but cannot guarantee-  Weâ€™ll definitely push to get your order to you by July 30th! We canâ€™t 100% guarantee it, but weâ€™ll do our absolute best"
-      },
-      {
         "cat": "fu",
         "label": "Follow Up",
-        "text": "1 instance(s) flagged this month under Follow Up."
-      },
-      {
-        "cat": "cc",
-        "label": "Call/Chat Etiquette",
-        "text": "4 instance(s) flagged this month under Call/Chat Etiquette. Auditor notes: delayed response on chat | closure not done, multiple delayed responses (NCF BOD given)"
+        "text": "1 instance(s) flagged this month under Follow Up. Auditor notes: "
       }
     ],
     "cases": [
@@ -522,7 +599,7 @@ const AGENTS = {
       {
         "query": "order status",
         "score": 83,
-        "comment": "Customer wanted to check if her order could be delivered by 30th July. AOI - need to work on using more positive and better phrases. We can try but cannot guarantee-  Weâ€™ll definitely push to get your order to you by July 30th! We canâ€™t 100% guarantee it, but weâ€™ll do our absolute best"
+        "comment": "Customer wanted to check if her order could be delivered by 30th July. AOI - need to work on using more positive and better phrases. We can try but cannot guarantee-  We\u2019ll definitely push to get your order to you by July 30th! We can\u2019t 100% guarantee it, but we\u2019ll do our absolute best"
       },
       {
         "query": "Return request",
@@ -557,7 +634,7 @@ const AGENTS = {
       {
         "query": "Return Request",
         "score": 0,
-        "comment": "Cx was looking to return his recent purchase. JC did not respond on time leading to delay cx connected over call and got the concern resolved. delayed response by 50 mins"
+        "comment": "Cx was looking to return his recent purchase. JC did not respond on time leading to delay cx connected over call and got the concern resolved. delayed response by 50 mins could have checked if the email was received or not"
       }
     ],
     "paramCaseMap": {
@@ -574,7 +651,8 @@ const AGENTS = {
         9
       ],
       "prob": [
-        5
+        5,
+        9
       ],
       "sol": [
         0,
@@ -597,36 +675,36 @@ const AGENTS = {
     "cq": 67,
     "audits": 5,
     "ncf": 0,
-    "totalErrors": 8,
+    "totalErrors": 9,
     "note": "Pooja scored 67% this month across 5 audits, with no non conformances flagged.",
     "params": {
       "ss": 1,
       "cc": 0,
       "prob": 4,
-      "sol": 1,
+      "sol": 2,
       "fu": 2,
       "tag": 0
     },
     "aois": [
       {
-        "cat": "sol",
-        "label": "Solution & Rec.",
-        "text": "1 instance(s) flagged this month under Solution & Rec.. Auditor notes: could have shared the ring size video of how to measure"
-      },
-      {
         "cat": "prob",
         "label": "Probing",
-        "text": "4 instance(s) flagged this month under Probing. Auditor notes: c-live not pitched | ocasion not checked"
+        "text": "4 instance(s) flagged this month under Probing. Auditor notes: c-live not pitched | ocasion not checked | could have asekd for the ocasion and price range accordingly assisted the cx"
       },
       {
-        "cat": "ss",
-        "label": "Soft Skills",
-        "text": "1 instance(s) flagged this month under Soft Skills. Auditor notes: no empathy when cx said she had not received the label for the return."
+        "cat": "sol",
+        "label": "Solution & Rec.",
+        "text": "2 instance(s) flagged this month under Solution & Rec.. Auditor notes: could have shared the ring size video of how to measure"
       },
       {
         "cat": "fu",
         "label": "Follow Up",
         "text": "2 instance(s) flagged this month under Follow Up. Auditor notes: no follow up done | multiple follow up not done"
+      },
+      {
+        "cat": "ss",
+        "label": "Soft Skills",
+        "text": "1 instance(s) flagged this month under Soft Skills. Auditor notes: no empathy when cx said she had not received the label for the return."
       }
     ],
     "cases": [
@@ -638,7 +716,7 @@ const AGENTS = {
       {
         "query": "Ring size guidance",
         "score": 75,
-        "comment": "Cx was looking for the help with ring size. AOI - lack of ownership c-live not pitched"
+        "comment": "Cx was looking for the help with ring size. AOI - lack of ownership c-live not pitched could have shared the ring size video of how to measure"
       },
       {
         "query": "Return request",
@@ -668,94 +746,10 @@ const AGENTS = {
         4
       ],
       "sol": [
-        4
-      ],
-      "fu": [
-        3,
-        4
-      ],
-      "tag": []
-    }
-  },
-  "soundarya": {
-    "name": "Soundarya",
-    "initials": "SO",
-    "color": "#ea580c",
-    "cq": 67,
-    "audits": 5,
-    "ncf": 1,
-    "totalErrors": 6,
-    "note": "Soundarya scored 67% this month across 5 audits, with 1 non conformance(s) flagged.",
-    "params": {
-      "ss": 1,
-      "cc": 1,
-      "prob": 1,
-      "sol": 0,
-      "fu": 3,
-      "tag": 0
-    },
-    "aois": [
-      {
-        "cat": "prob",
-        "label": "Probing",
-        "text": "1 instance(s) flagged this month under Probing."
-      },
-      {
-        "cat": "ss",
-        "label": "Soft Skills",
-        "text": "1 instance(s) flagged this month under Soft Skills. Auditor notes: ob call well-being could have been checked"
-      },
-      {
-        "cat": "fu",
-        "label": "Follow Up",
-        "text": "3 instance(s) flagged this month under Follow Up. Auditor notes: no follow up status updated in H&W sheet | not added in h&w sheet"
-      },
-      {
-        "cat": "cc",
-        "label": "Call/Chat Etiquette",
-        "text": "1 instance(s) flagged this month under Call/Chat Etiquette. Auditor notes: no proper closure of chat"
-      }
-    ],
-    "cases": [
-      {
-        "query": "Shipping related",
-        "score": 75,
-        "comment": "Cx wanted to check on shipping fee. JC assisted the cx with the details, but missed to pitch for C-Live."
-      },
-      {
-        "query": "C-live request",
-        "score": 80,
-        "comment": "Cx had placed a request for C-live. JC  called to confirm on the same. AOI - no follow up status update in H&W sheet. no follow up status updated in H&W sheet"
-      },
-      {
-        "query": "PoP redemption",
-        "score": 88,
-        "comment": "Ob call  made to check on the redemption purchase. Cx asked JC to call back the next day. ob call well-being could have been checked"
-      },
-      {
-        "query": "Customisation existing design",
-        "score": 0,
-        "comment": "Cx was looking for a mangalsutra and wanted the same to be customised. AOI- JC did not close the chat properly and no follow up seen. no proper closure of chat not added in h&w sheet"
-      },
-      {
-        "query": "Presales",
-        "score": 90,
-        "comment": "cx was looking for a customised men studs. AOI - not added in H&W lead sheet."
-      }
-    ],
-    "paramCaseMap": {
-      "ss": [
-        2
-      ],
-      "cc": [
-        3
-      ],
-      "prob": [
-        0
-      ],
-      "sol": [],
-      "fu": [
         1,
+        4
+      ],
+      "fu": [
         3,
         4
       ],
@@ -766,34 +760,34 @@ const AGENTS = {
     "name": "Hiten_K",
     "initials": "HK",
     "color": "#db2777",
-    "cq": 66,
+    "cq": 65,
     "audits": 10,
     "ncf": 0,
-    "totalErrors": 20,
-    "note": "Hiten K scored 66% this month across 10 audits, with no non conformances flagged.",
+    "totalErrors": 22,
+    "note": "Hiten K scored 65% this month across 10 audits, with no non conformances flagged.",
     "params": {
-      "ss": 3,
-      "cc": 4,
-      "prob": 4,
+      "ss": 5,
+      "cc": 3,
+      "prob": 5,
       "sol": 5,
       "fu": 4,
       "tag": 0
     },
     "aois": [
       {
-        "cat": "sol",
-        "label": "Solution & Rec.",
-        "text": "5 instance(s) flagged this month under Solution & Rec.. Auditor notes: could have mentioned the weight of the design than just sending the pics again and again | initially when cx asked JC if he could suggest designs which are available in 2 QTY."
+        "cat": "ss",
+        "label": "Soft Skills",
+        "text": "5 instance(s) flagged this month under Soft Skills. Auditor notes: long mute | cx said she is facing an error no empathy | long dead air observed"
       },
       {
         "cat": "prob",
         "label": "Probing",
-        "text": "4 instance(s) flagged this month under Probing. Auditor notes: did not check for the reason of purchase | sending all the messages in one go before probing is not right way"
+        "text": "5 instance(s) flagged this month under Probing. Auditor notes: did not check for the reason of purchase | sending all the messages in one go before probing is not right way | did not probe the ocasion of purchase. | did not check if cx is interested in placing the order. | could have checked if would like to check out 18kt designs to avail the offer"
       },
       {
-        "cat": "ss",
-        "label": "Soft Skills",
-        "text": "3 instance(s) flagged this month under Soft Skills. Auditor notes: long mute | cx said she is facing an error no empathy"
+        "cat": "sol",
+        "label": "Solution & Rec.",
+        "text": "5 instance(s) flagged this month under Solution & Rec.. Auditor notes: could have mentioned the weight of the design than just sending the pics again and again | initially when cx asked JC if he could suggest designs which are available in 2 QTY."
       },
       {
         "cat": "fu",
@@ -803,7 +797,7 @@ const AGENTS = {
       {
         "cat": "cc",
         "label": "Call/Chat Etiquette",
-        "text": "4 instance(s) flagged this month under Call/Chat Etiquette. Auditor notes: responses were delayed | delayed responses"
+        "text": "3 instance(s) flagged this month under Call/Chat Etiquette. Auditor notes: responses were delayed | delayed responses"
       }
     ],
     "cases": [
@@ -855,7 +849,7 @@ const AGENTS = {
       {
         "query": "Offers & Discounts",
         "score": 90,
-        "comment": "Cx wanted to know about the offers if any. JC assisted with the offer details. AOI - delayed responses observed."
+        "comment": "Cx wanted to know about the offers if any. JC assisted with the offer details. AOI - delayed responses observed. delayed responses"
       }
     ],
     "paramCaseMap": {
@@ -866,7 +860,6 @@ const AGENTS = {
       ],
       "cc": [
         2,
-        3,
         4,
         9
       ],
